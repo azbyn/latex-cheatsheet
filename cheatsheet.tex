@@ -1,0 +1,372 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{minted}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+ 
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{multicol}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\usepackage{ulem}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\newmintinline[code]{latex}{}
+\newminted[latex]{latex}{}
+
+\newcommand{\package}[1]{\code{\usepackage{#1}}\label{#1}}
+\newcommand{\noncurs}{\hspace{.5cm}$\notin \mathscr{C}$}
+
+\newcommand{\explain}[2]{\code{#1} & #1 & #2\\}
+
+\newcommand{\packageSubsection}[2]{\subsection[#1]{#1 - \code{#2}}}
+
+\geometry{a4paper,left=30mm,right=20mm,top=20mm,bottom=30mm}
+
+
+\hypersetup{colorlinks=true}
+
+%%%%%%%%%%%%%%
+\begin{document}
+
+%\tableofcontents
+
+\section{Document Class}
+\subsection{Report}
+\code{\documentclass[11pt,a4paper]{report}}
+
+permite definirea Capitolelor, permite \code{\maketitle}
+(dar informatiile cu Titlu si Autor apar pe o pagina separata de restul PDF-ului),
+permite mediul abstract:
+
+OIDA
+
+\subsection{Article}
+
+\code{\documentclass[11pt,a4paper]{article}}
+OIDA
+
+\subsection{Book}
+
+\code{\documentclass[11pt,a4paper]{book}}
+
+OIDA
+
+\section{Packages}
+\begin{enumerate}
+\item Math:\\
+  \package{amsmath} or \package{mathtools} \\
+  \package{amssymb}\\
+  \package{amsfonts}\\
+  \package{mathrsfs} \noncurs
+
+\item Color:\\
+  \package{color}
+
+\item Images:\\
+  \package{graphicx}\\
+  \package{epstopdf}
+
+\item Unicode - fancy quotes:\\
+  \code{\usepackage[T1]{fontenc}}\\
+  \code{\usepackage[utf8]{inputenc}} \noncurs
+
+\item Index requires Ctrl-Shift-I in OIDA: \
+  \package{makeidx}
+
+\item Hyper references:\\
+  \package{hyperref}
+
+\item Colums: \noncurs\\
+  \package{multicol}
+
+
+\item Setting title formatting (font size, centering, etc.):\\
+  \package{sectsty}
+
+  
+\end{enumerate}
+
+\section{Package ussage}
+\packageSubsection{Fancy Quotes}{\usepackage[T1]{fontenc}}
+\code{,,} might work instead of \code{\quotedblbase}. \code{% ,,Hello''}.
+
+\begin{tabular}{l c l}
+\explain{\quotedblbase}{Double low-9 quotation mark}
+\explain{\quotesinglbase}{Single low-9 quotation mark}
+\explain{\guillemetleft}{Left-pointing double angle quotation mark}
+\explain{\guillemetright}{Right-pointing double angle quotation mark}
+\explain{\guilsinglleft}{Single left-pointing angle quotation mark}
+\explain{\guilsinglright}{Single right-pointing angle quotation mark}
+\end{tabular}
+
+\packageSubsection{Centering and seting font sizes}{\usepackage{sectsty}}
+Quick Usage:\\
+\code{\chaptertitlefont{\centering\LARGE}}\\
+\code{\sectionfont{\Large}}
+\\\\
+Tl;dr - executes ... before printing whatever it says
+\\
+Long list: \noncurs
+\vspace{-11pt}
+\begin{multicols}{2} \noindent
+  \code{\allsectionsfont{...}} \\
+  \code{\partfont{... }}\\
+  \code{\chapterfont{...}}\\
+  \code{\sectionfont{...}}\\
+  \code{\subsectionfont{...}}\\
+  \code{\subsubsectionfont{...}}\\
+\columnbreak
+  \code{\paragraphfont{...}}\\
+  \code{\subparagraphfont{...}}\\
+  \code{\minisecfont{...}}\\
+  \code{\partnumberfont{...}}\\
+  \code{\parttitlefont{...}}\\
+  \code{\chapternumberfont{...}}\\
+  \code{\chaptertitlefont{...}}
+\end{multicols}
+
+\subsection{Dots}
+\begin{latex}
+\usepackage{tocloft}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\end{latex}
+
+\subsection{Colors:}
+\begin{latex}
+% requires \usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=cyan, citecolor=green,
+  filecolor=black, urlcolor=blue}
+\end{latex}
+Define colors:\\
+\code{OIDA}
+
+
+\section{Romanian Names}
+\subsection[Quick way]{Quick way \noncurs}
+
+\code{\usepackage[romanian]{babel}}
+
+\subsection{Long way}
+\begin{latex}
+\renewcommand{\contentsname}{Cuprins}
+\renewcommand{\chaptername}{Capitolul}
+\renewcommand{\bibname}{B\lowercase{ibliografie}}
+\renewcommand{\appendixname}{Anexa}
+\renewcommand{\indexname}{I\lowercase{ndice}}
+\end{latex}
+
+\section[New Commands]{New Commands \noncurs}
+\begin{latex}
+
+\newcommand{\lab}[1]{
+  \section*{Laborator #1}
+  \addcontentsline{toc}{section}{Laborator #1}
+}
+
+\usepackage{xparse}
+% O, o optional, m= mandatory
+\DeclareDocumentEnvironment{problema}{O {1} o m}{
+  \begin{enumerate}[leftmargin=*]
+    \addtocounter{enumi}{#1}
+    \item
+}{
+  \end{enumerate}
+  \IfValueT{#2}{\cppcode{#2}}
+}
+
+\end{latex}
+
+\section{Fancy Headers}
+
+\code{\pagestyle{fancy} % inside the document
+}\\
+OIDA
+
+\section{Page Layout}
+\subsection[Quick way]{Quick way \noncurs}
+\package{geometry}\\
+\code{\geometry{a4paper,left=30mm,right=20mm,top=20mm,bottom=30mm}}
+
+\subsection{Other way}
+OIDA
+
+
+
+\section{Symbols}
+\subsection{The bane of students}
+\begin{tabular}{l c l}
+\code{$\backslash$ \textbackslash} & \textbackslash & backslash \\
+\explain{\LaTeX}{\textit{that} symbol}
+\end{tabular}
+
+\subsection{Diacritics}
+\begin{tabular}{l c l}
+\explain{\^{a}}{circumflex}
+\explain{\i \j}{dotless i and j}
+\explain{\`{o}}{grave accent}
+\explain{\'{o}}{acute accent}
+\explain{\^{o}}{circumflex}
+\explain{\"{o}}{umlaut, trema or dieresis}
+\explain{\H{o}}{long Hungarian umlaut (double acute)}
+\explain{\~{o}}{tilde}
+\explain{\c{c}}{cedilla}
+\explain{\k{a}}{ogonek}
+\explain{\l{}}{barred l (l with stroke)}
+\explain{\={o}}{macron accent (a bar over the letter)}
+\explain{\b{o}}{bar under the letter}
+\explain{\.{o}}{dot over the letter}
+\explain{\d{u}}{dot under the letter}
+\explain{\r{a}}{ring over the letter}
+\explain{\u{o}}{breve over the letter}
+\explain{\v{s}}{caron/háček}
+\explain{\t{oo}}{"tie" (inverted u) over the two letters}
+\explain{\o}{slashed o (o with stroke)}
+\explain{\ss}{scharfes S}
+\end{tabular}
+
+\section{Spacing}
+\subsection[Vertical]{Vertical (that way $\downarrow$)}
+\indent
+
+\code{\par} - Next paragraph (like  \code{\\} but with indent)
+
+\code{\newpage \pagebreak \clearpage} - duh
+
+\code{\smallskip \medskip \bigskip } - duh
+
+\code{\cleardoublepage} - in book mode goto next odd page
+
+\code{\\[10cm] \vspace{10pt}} - vertical space of height (might require newline after)
+
+\subsection[Horizontal]{Horizontal (that way $\rightarrow$)}
+\indent
+
+\code{\-} - hyphenation point\\
+e.g. \code{Panzer\-kampf\-wagen VI Tiger Aus\-füh\-rung B ,,Königs\-tiger''} - Panzer\-kampf\-wagen VI Tiger Ausf. B ,,Königs\-tiger''\smallskip
+
+\code{\hspace{10pt}} - exact unit - might be negative
+\code{M\hspace{-9pt}M} - M\hspace{-9pt}M
+
+MAKE SHOW COMMAND FOR \code{...} - ...
+
+
+
+\code{\!} - negative space
+
+\code{\thinspace \medspace \thickspace} $\iff$ \code{\, \: \;} - duh
+
+\code{~ \ \quad \qquad} - bigger\\
+e.g. \code{a\, b\: c\; d~e\ f\quad g\qquad h} - 
+a\, b\: c\; d~e\ f\quad g\qquad h
+
+\subsection{Line spacing}
+\begin{latex}
+\linespread{1.3} % ~1.5 
+\linespread{1.6} % ~2 
+\setstretch{2} % 2
+\end{latex}
+
+
+\section[Miscellaneous]{\sout{Pointless} Miscellaneous}
+
+
+Striketrough:\\
+\package{ulem}\\
+\code{\sout{...}}
+
+Units:\\
+pt - a point is 1/72.27 inch, that means about 0.351 mm in non freedom units\\
+mm - millimeter\\
+cm - centimeter\\
+in - inch\\
+ex - roughly the height of an ''x'' in the current font\\
+em - roughly the width of an ''M'' (uppercase) in the current font\\
+
+\end{document}
+
+M\hspace{-9pt}M
+
+263. Formatarea textului
+\singlespacing Normal
+\doublespacing
+% spat,ierea normal ̆a% a liniilor\doublespacing% spat,ierea dubl ̆a% a liniilor\onehalfspace% spat,ierea la 1.5 fat, ̆a de% spat,ierea normal ̆a\setstretch{factor}% seteaz ̆a spat,i
+
+sau:
+Acelas,i efect se poate obt,ine s,i dac  ̆a se folosesc mediile\begin{singlespace}  ...\end{singlespace}\begin{doublespace}  ...\end{doublespace}\begin{onehalfspace}  ...\end{onehalfspace}\begin{spacing}{factor}  ...\end{spacing}{factor}
+
+Serif -default \textrm{Serif}
+Sans serif \textsf{Sans Serif}
+typewritter \texttt{Typewriter}
+
+\tiny{tiny} \scriptsize{script} \footnote{footnote} \small{small}
+
+\textmd{Medium - default}
+\textbf{bold}
+\textup{Upright}
+\textit{italic}
+\textsl{slanted}
+\textsc{Small Caps}
+\emph{Emphasized \emph{also emph}} - can be nested
+
+Roman $\mathrm{A\,B\,C}$
+Caligraphic \mathcal{A\ B\ C}
+BlackboardBold $\mathbb{A~B~C}$
+MathBold \boldmath{A\; B\; C\; abc}
+Boldface \mathbf{ABC\;abc}
+Fratur \mathfrak{ABC\;abc}
+
+
+\normalsize{normalsize - default}
+\large{large}
+\Large{Large}
+\LARGE{LARGE}
+\huge{huge}
+\Huge{Huge}
+
+Colors:
+\definecolor{name}{rgb}{r,g,b} r,g,b \in [0,1]
+\colorbox{culoare fundal}{text}\fcolorbox{culoare margine}{culoare fundal}{text}\pagecolor{culoare}
+
+
+
+fara numar pagina:
+\thispagestyle{empty}
+
+Includere fisier:
+\include{bla.txt}
+
+Duh:
+\tableofcontents
+\maketitle
+
+\pagenumbering{roman} % or arabic 
+
+\newpage
+
+Structura:
+\chapter[TOC name]{full name}
+\section{1}{2}
+\subsection{1}{2}
+
+\printindex
+\clearpage
+
+Bibliografie:
+\begin{thebibliography}{99}
+    \bibitem{datta/17} Dilip Datta,\textit{\LaTeX{} in $24$ Hours. A Practical Guide for Scientific Writting}, Springer, Cham,2017
+
+\end{thebibliography}
+
+Left at chapter 4
