@@ -1,2 +1,7 @@
-\noindent not indenting otherwise indented text\\
-\indent indenting otherwise unindented text
+  \renewcommand{\labelitemi}{$\bigstar$}
+  \renewcommand{\labelitemii}{$\checkmark$}
+  \renewcommand{\labelitemiii}{$\sharp$}
+  \renewcommand{\labelitemiv}{$\maltese$}
+  \begin{itemize}
+    \item Foo
+\end{itemize}

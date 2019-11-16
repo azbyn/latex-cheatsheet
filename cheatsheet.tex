@@ -37,6 +37,7 @@
 \usepackage{combelow}
 
 \usepackage{array}
+\usemintedstyle{black}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -127,14 +128,7 @@
   %linenos,
   %frame=rightline
 }
-%\newenvironment{example}{\begin{LTXexample}}{\end{LTXexample}}
-
-%\renewcommand{\code}[1]{\verbclstinlineode{#1}}
-
-%\newcommand{\coden}[1]{\ceo texttt{#1}}
-%\newcommand{\coden}[1]{\lstinline{#1}}
 \newcommand{\coden}[1]{\code{#1}}
-\newcommand{\keyword}[1]{\coden{#1}}
 
 \newcommand{\codeshowD}[2]{\coden{#1} & $#1$ & \coden{#2} & $#2$}
 \newcommand{\codeshowB}[3]{\coden{#1} & $\displaystyle#1$ &
@@ -175,8 +169,8 @@
 \newcommand{\article}{\code{article}\ }
 \newcommand{\report}{\code{report}\ }
 
-\hypersetup{colorlinks=true, linkcolor=Blue, citecolor=green,
-  filecolor=black, urlcolor=blue}
+%\hypersetup{colorlinks=true, linkcolor=Blue, citecolor=green,
+%  filecolor=black, urlcolor=blue}
 \usepackage{longtable} % To display tables on several pages
 
 \renewcommand{\indexname}{I\lowercase{ndice}}
@@ -200,7 +194,6 @@
 \date{\today}
 
 \newcommand*{\R}{\mathbb{R}}
-\makeindex
 %%%%%%%%%%%%%%
 \begin{document}
 \include{title}
@@ -214,6 +207,9 @@
 \input{gut/fancy_headers}
 \input{gut/references}
 \input{gut/footnotes}
+\input{gut/symbols}
+\input{gut/spacing}
+\input{gut/misc}
 
 \pagestyle{plain}
 \chapter{Math}\label{math}
@@ -231,23 +227,8 @@
 
 \chapter{The rest}
 \input{rest/page}
-\input{rest/symbols}
-\input{rest/spacing}
-\input{rest/misc}
 \input{rest/doc_structure}
 \input{rest/font_styles}
 \include{end}
 
 \end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% https://www.math.uaic.ro/~maticiuc/didactic/LaTeX_Course.pdf @line 85
-Left at Tables
-Left lab 9-10
-
-Add itemize....
-
-PRINT this
-
-ALSO PRINT Barem & checklist
-
-Page 18 (actual 20) - dotfill

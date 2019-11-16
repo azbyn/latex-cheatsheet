@@ -11,7 +11,7 @@
 \newtheorem{lema}[theo]{Lema}
 \newtheorem{prop}[theo]{Propozi\c{t}ia}
 \newtheorem{rem}[theo]{Remarca}
-\newenvironment{proof}{\noindnt\textbf{Demonstra\c{t}ie.}}{\hfill\rule{0.5em}{0.5em}}
+\newenvironment{proof}{\noindnt\textbf{Demonstratie.}}{\hfill\rule{.5em}{.5em}}
 \end{latex}
 
 That square is made using \code{\rule[raise]{width}{thickness}} (raise means
@@ -40,7 +40,7 @@ $x \neq 0 \implies (x < 0) \lor (x > 0)$
 
 \subsection{With \code{asmthm}}
 Adding a "*" after \code{\newtheorem} will not number any theorem of that type
-like so:
+like so:\\
 \code{\newtheorem*{rem}[theo]{Remarca}}
 
 Theorem styles:
@@ -51,7 +51,7 @@ Theorem styles:
   \code{definition} & \textbf{Definition 1.} Some text. \\
   \code{remark} & \textit{Remark 1.} Some text. \\
 \end{longtable}
-Custom theorems:\noncurs\\
+Custom theorems:\noncurs
 \begin{latex}
 \newtheoremstyle{stylename}% name of the style to be used
   {spaceabove}% measure of space to leave above the theorem. E.g.: 3pt
@@ -79,7 +79,7 @@ Proof now becomes:
   \renewcommand*{\proofname}{\noindent\textbf{Demonstra\c{t}ie.}}
 \end{latex}
 
-To replace the Q.E.D. symbol:\noncurs\\
+To replace the Q.E.D. symbol:\noncurs
 \begin{latex}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 \end{latex}
@@ -98,7 +98,6 @@ Here is another proof:
 \[a^2 + b^2 = c^2 \]
 \end{proof}
 \end{example}
-
 
 Doing something like this might be useful to add a symbol at the end:
 \begin{latex}

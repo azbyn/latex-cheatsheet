@@ -31,6 +31,9 @@
     "gut/fancy_headers"
     "gut/references"
     "gut/footnotes"
+    "gut/symbols"
+    "gut/spacing"
+    "gut/misc"
     "math/math_mode"
     "math/environments"
     "math/symbols"
@@ -40,9 +43,6 @@
     "tables"
     "lists"
     "rest/page"
-    "rest/symbols"
-    "rest/spacing"
-    "rest/misc"
     "rest/doc_structure"
     "rest/font_styles"
     "end"
@@ -101,7 +101,6 @@
     '("package" 1)
     '("codeshowB" 3)
     '("codeshowD" 2)
-    '("keyword" 1)
     '("coden" 1)
     "noncurs"
     "book"

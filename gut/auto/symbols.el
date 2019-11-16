@@ -1,8 +1,7 @@
 (TeX-add-style-hook
- "environments"
+ "symbols"
  (lambda ()
    (LaTeX-add-labels
-    "figure"
-    "plot"))
+    "othersymb"))
  :latex)
 

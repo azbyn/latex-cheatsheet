@@ -6,8 +6,9 @@ and \coden{description}.
 New items are inserted with \coden{\item[sym]}. 
 
 There's a default vertical space between items.
-This space can be modified by writing \code{\setlength{\itemsep}{5mm}} after \code{\begin{env}}.
-
+This space can be modified by writing\\ \code{\setlength{\itemsep}{5mm}} after \code{\begin{env}}.
+  
+\smallskip
 We can nest those a maximum of 4 times.
 
 \begin{example}
@@ -32,7 +33,7 @@ We can nest those a maximum of 4 times.
 \subsection{\texttt{enumerate}}
 Items can be labeled (the other 2 can't).
 
-This redefines the labels names:
+This redefines the labels names (see \nameref{numbers}):
 \begin{latex}
 \renewcommand{\labelenumi}{\Roman{enumi}.}
 \renewcommand{\labelenumii}{(\arabic{enumii})}

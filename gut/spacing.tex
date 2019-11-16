@@ -17,6 +17,9 @@
 
 \code{\\[10cm] \vspace{10pt}} - vertical space of height (might require newline after)
 
+\code{\vfill} - add spaces till the end of page
+
+
 \subsection[Horizontal]{Horizontal (that way $\rightarrow$)}
 \indent
 
@@ -33,8 +36,18 @@ alternative: \code{\hyphenation{Panzer-kampf-wagen}}
 \code{\thinspace \medspace \thickspace} $\iff$ \code{\, \: \;} - duh
 
 \code{~ \ \quad \qquad} - bigger\\
-\codeeg{a\, b\: c\; d~e\ f\quad g\qquad h}\\
-Note: \code{~} is non breaking space.
+\codeeg{a\, b\: c\; d~e\ f\quad g\qquad h}
+
+\noindent
+\code{\vfill} - add spaces till the end of line\\
+\code{\dotfill} - add dots till the end of line\\
+
+\begin{example}
+Hello \hfill there\\
+General \dotfill Kenobi
+\end{example}
+
+\note{\code{~} is non breaking space.}
 
 \subsectionNoncurs{Line spacing}
 \begin{latex}

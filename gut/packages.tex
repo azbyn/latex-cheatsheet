@@ -47,6 +47,53 @@ or \codeshow{{\color{red} hello}}
 Tell where the images are, relative to main \texttt{.tex} file:\\
 \code{\graphicspath}\texttt{\{ \{./images/\} \{./images2/\} \}}
 
+\subsection{Figure}\label{figure}
+\begin{latex}
+\begin{figure}[!hbt]
+  \includegraphics[width=\textwidth]{plot}
+  \caption{Caption}\label{plot}
+\centering
+\end{figure}
+\end{latex}
+\note{You can use \code{wrapfigure} for wraping text around a figure. See \nameref{wraptable}}.
+Options:
+\begin{longtable}{l l}
+  \justexplain{h}{place here - kinda}
+  \justexplain{h!}{place here - more strict}
+  \justexplain{t}{top of the page}
+  \justexplain{b}{bottom of the page}
+  \justexplain{p}{on a special page}
+\end{longtable}
+
+Two figures inline:
+\begin{latex}
+\begin{figure}[!hbt]
+  \centering
+  \includegraphics[height = 3cm]{stema.eps}
+  \hspace{3cm}
+  \includegraphics[width = 3cm]{Escher_Relativity.jpg}
+  \caption[Imagini\^{i}n linie]{Stema Facult\u{a}\c{t}ii de Matematic\u{a}
+    \c{s}i \textit{Relativitate} de M.C. Escher (1953)}\label{Stema_Escher2}
+\end{figure}
+\end{latex}
+
+\note{We can use minipages to number them separately.}
+
+To number them separately but within the same main number use \code{subfigure} 
+(Requires the package \code{subfigure}):
+\begin{latex}
+\begin{figure}[!htb]
+  \centering
+  \subfigure[Stema Facult\u{a}\c{t}ii de Matematic\u{a}]{
+    \includegraphics[height=3cm]{stema.eps}\label{Stema4}}
+  \hspace{3cm}
+  \subfigure[\textit{Relativitate} de M.C. Escher (1953)]{
+    \includegraphics[width=3cm]{Escher_Relativity.jpg}\label{Escher4}
+  }\\
+  \caption{Stema Facult\u{a}\c{t}ii de Matematic\u{a}
+    \c{s}i \textit{Relativitate} de M.C. Escher (1953)}\label{Stema_Escher4}}
+\end{figure}
+\end{latex}
 \subsection{Unicode - fancy quotes}
 \begin{latex}
 \usepackage[T1]{fontenc}
@@ -78,13 +125,13 @@ or ``Hi''.\\
 \end{example}
 
 \subsection{Centering and setting font sizes}
-Quick Usage:\\
+Quick Usage:
 \begin{latex}
 \usepackage{sectsty}
 \chaptertitlefont{\centering\LARGE}
 \sectionfont{\Large}
 \end{latex}
-\\
+
 Long list (tl;dr - executes ... before printing whatever it says): \noncurs
 \vspace{-11pt}
 \begin{multicols}{2} \noindent
