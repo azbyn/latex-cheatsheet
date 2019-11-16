@@ -37,7 +37,7 @@
 \usepackage{combelow}
 
 \usepackage{array}
-\usemintedstyle{black}
+\usemintedstyle{vs}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -147,8 +147,8 @@
 \newcommand{\justexplain}[2]{\code{#1} & #2\\}
 \newcommand{\explainM}[2]{\code{#1} & $#1$ & #2\\}
 
-\newcommand{\explainMFont}[2]{\explainM{#1 {ABC\ i\ abc\ 123}}{#2}}
-\newcommand{\explainMFontUpper}[2]{\explainM{#1 {ABC\ I\ DEF}}{#2 (uppercase only)}}
+\newcommand{\explainMFont}[2]{\explainM{#1{ABC\ i\ abc\ 123}}{#2}}
+\newcommand{\explainMFontUpper}[2]{\explainM{#1{ABC\ I\ DEF}}{#2 (uppercase only)}}
 
 \newcommand{\codeshow}[1]{\code{#1} - #1}
 \newcommand{\mcodeshow}[1]{\code{#1} - $#1$}
@@ -169,8 +169,8 @@
 \newcommand{\article}{\code{article}\ }
 \newcommand{\report}{\code{report}\ }
 
-%\hypersetup{colorlinks=true, linkcolor=Blue, citecolor=green,
-%  filecolor=black, urlcolor=blue}
+\hypersetup{colorlinks=true, linkcolor=Blue, citecolor=green,
+  filecolor=black, urlcolor=blue}
 \usepackage{longtable} % To display tables on several pages
 
 \renewcommand{\indexname}{I\lowercase{ndice}}
@@ -189,13 +189,15 @@
 
 \renewcommand{\bibname}{Bibliografie}
 
-\title{\LaTeX{} Cheatsheet}
+%\title{\LaTeX{} Cheatsheet}
+\title{\LaTeX{} CheatSheet\footnote{Saving 6 times more trees \& stuff}}
 \author{Łucasz Zieliński\thanks{Dzięki światu}}
 \date{\today}
 
 \newcommand*{\R}{\mathbb{R}}
 %%%%%%%%%%%%%%
 \begin{document}
+%\maketitle
 \include{title}
 
 \chapter{Das gute Zeug}
