@@ -1,0 +1,56 @@
+\section{Spacing}
+\subsection{Indentaion}
+\begin{example}
+\noindent not indenting otherwise indented text\\
+\indent indenting otherwise unindented text
+\end{example}
+\subsection[Vertical]{Vertical (that way $\downarrow$)}
+\indent
+
+\code{\par} - Next paragraph (like  \code{\\} but with indent)
+
+\code{\newpage \pagebreak \clearpage} - duh
+
+\code{\smallskip \medskip \bigskip } - duh
+
+\code{\cleardoublepage} - in book mode goto next odd page
+
+\code{\\[10cm] \vspace{10pt}} - vertical space of height (might require newline after)
+
+\subsection[Horizontal]{Horizontal (that way $\rightarrow$)}
+\indent
+
+\code{\-} - hyphenation point\\
+\codeeg{Panzer\-kampf\-wagen VI Tiger Aus\-füh\-rung B ,,Königs\-tiger''}\\
+alternative: \code{\hyphenation{Panzer-kampf-wagen}}
+\smallskip
+
+\code{\hspace{10pt}} - exact unit - might be negative
+\code{M\hspace{-9pt}M} - M\hspace{-9pt}M
+
+\code{\!} - negative space
+
+\code{\thinspace \medspace \thickspace} $\iff$ \code{\, \: \;} - duh
+
+\code{~ \ \quad \qquad} - bigger\\
+\codeeg{a\, b\: c\; d~e\ f\quad g\qquad h}\\
+Note: \code{~} is non breaking space.
+
+\subsectionNoncurs{Line spacing}
+\begin{latex}
+\linespread{1.3} % ~1.5 
+\linespread{1.6} % ~2 
+\setstretch{2} % 2
+\end{latex}
+or:
+\begin{latex}
+\singlespacing
+\doublespacing
+
+\begin{singlespace}  ...\end{singlespace}
+\begin{doublespace}  ...\end{doublespace}
+\begin{onehalfspace}  ...\end{onehalfspace}
+\begin{spacing}{factor}  ...\end{spacing}{factor}
+
+\end{latex}
+

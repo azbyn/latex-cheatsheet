@@ -1,0 +1,196 @@
+\section{Symbols}
+\subsection*{Regular}
+\codeshow{$+ - = ! / ( ) [ ] < > | ' : *$}
+\subsection*{Greek}
+Only showing peculiar symbols. Most have intuitive names.\\
+\begin{example}
+\[\begin{matrix}
+  \gamma & \eta    & \kappa\\
+  \mu    & \nu     & \varphi\\
+  \rho   & \varrho & \chi
+\end{matrix}\]
+\end{example}
+\subsection*{Operators}
+Most multiple letter functions have a separate command (eg. \mcodeshow{\sin}).
+
+Other peculiar symbols are:\\
+\mcodeshow{\liminf}\\
+\mcodeshow{\limsup}
+
+For declaring custom operators:
+\mcodeshow{\operatorname{atan}(x)}\\
+or if it's used frequently: \code{\DeclareMathOperator*{\atan}{atan}} (in preamble).
+
+\subsection*{Sums, integrals, and other ``big'' symbols}
+
+\begin{longtable}{l l | l l | l l}
+  \codeshowB{\sum      }{\prod      }{\coprod}
+  \codeshowB{\bigoplus }{\bigotimes }{\bigodot}
+  \codeshowB{\bigcup   }{\bigcap    }{\biguplus}
+  \codeshowB{\bigsqcup }{\bigvee    }{\bigwedge}
+  \codeshowB{\int      }{\oint      }{\iint}
+  \codeshowB{\iiint    }{\iiiint    }{\idotsint}
+\end{longtable}
+
+\subsection*{Fancy braces}
+\begin{example}
+\[
+( a ), [ b ], \{ c \}, | d |, \| e \|,
+\langle f \rangle, \lfloor g \rfloor,
+\lceil h \rceil, \ulcorner i \urcorner
+\]
+\end{example}
+
+\subsection*{Fractions}
+
+\begin{example}
+\[
+x = a_0 + \cfrac{1}{a_1 
+          + \cfrac{1}{a_2 
+            + \cfrac{1}{a_3 +\cfrac{1}{a_4} } } }
+\]
+\end{example}
+
+vs
+    
+\begin{example}
+\[
+x = a_0 + \frac{1}{a_1 
+          + \frac{1}{a_2 
+            + \frac{1}{a_3 + \frac{1}{a_4} } } }
+\]
+\end{example}
+
+There's also the option for slanted fractions (requires \package{xfrac}):\\\codeshow{\sfrac{1}{2}}
+
+\subsection*{Automatic sizing}
+\begin{example}
+\[
+P\left(A=2\middle|\frac{A^2}{B}>4\right)
+\]
+\end{example}
+
+\subsection*{Manual sizing}
+\begin{example}
+\[
+  ( \big( \Big( \bigg( \Bigg(
+  \frac{\mathrm d}{\mathrm d x} \big( k g(x) \big)
+\]
+\end{example}
+
+\subsection*{Accents}
+\begin{longtable}{l l | l l}
+  \code{a' or a ^{}} & $a'$ & \mtshow{a''}
+  \codeshowD{\hat{a}}{\bar{a}}\\
+  \codeshowD{\grave{a}}{\acute{a}}\\
+  \codeshowD{\dot{a}}{\ddot{a}}\\
+  \codeshowD{\overrightarrow{AB}}{\overleftarrow{AB}}\\
+  \codeshowD{\overline{aaaa}}{\check{a}}\\
+  \codeshowD{\breve{a}}{\vec{a}}\\
+  \codeshowD{\dddot{a}}{\ddddot{a}}\\
+  \codeshowD{\widehat{ABC}}{\widetilde{AAA}}\\
+  \codeshowD{\tilde{a}}{\underline{a}}\\
+  \codeshowD{\underset{u}{abc}}{\overset{o}{abc}}\\
+  \codeshowD{\underbrace{abc}}{\overbrace{abc}}\\
+  \mtshow{\stackrel\frown{AAA}}
+\end{longtable}
+E.g.:\\
+\begin{example}
+\[
+  \overline { \overline{A} \cup
+    \overline{\overline{B}} }
+  = A \cap \overline{B} \, ,\quad
+  \text{folosind legile lui De Morgan}
+\]
+\end{example}
+
+\subsection*{Dots}
+\begin{longtable}{l l l}
+  \explain{\dots}{generic dots (ellipsis), to be used in text (outside formulae as well).
+    It automatically manages whitespaces before and after itself according to the context. }
+  \explainM{\ldots}{similar to the previous, but no whitespace management}
+  \explainM{\cdots}{centered dots}
+  \explainM{\vdots}{vertical dots}
+  \explainM{\ddots}{diagonal dots}
+  \explainM{\iddots}{inverse diagonal dots (requires the package \coden{mathdots})}
+  \coden{\hdotsfor{n}}& $\dots\dots$ & a row of dots spanning $n$ columns.
+\end{longtable}
+
+\subsection*{Other operators}
+\subsubsection*{Binary and relation}
+\begin{longtable}{l l | l l | ll | ll}
+  \codeshowD{<}{>} & \codeshowD{=}{\doteq}\\
+  \codeshowD{\leq}{\geq} & \codeshowD{\equiv}{\approx}\\
+  \codeshowD{\ll}{\gg} & \codeshowD{\cong}{\simeq}\\
+  \codeshowD{\subset}{\supset} & \codeshowD{\sim}{\propto}\\
+  \codeshowD{\subseteq}{\supseteq} & \codeshowD{\parallel}{\nparallel}\\
+  \codeshowD{\nsubseteq}{\nsupseteq} & \codeshowD{\asymp}{\bowtie}\\
+  \codeshowD{\sqsubset}{\sqsupset} & \codeshowD{\vdash}{\dashv}\\
+  \codeshowD{\sqsubseteq}{\sqsupseteq} & \codeshowD{\smile}{\frown}\\
+  \codeshowD{\preceq}{\succeq} & \codeshowD{\prec}{\succ}\\
+  \codeshowD{\in}{\ni} & \codeshowD{\notin}{\neq}\\
+  \codeshowD{\mid}{\perp} & \codeshowD{\models}{\therefore}\\
+  \codeshowD{\sphericalangle}{\measuredangle} & \codeshowD{\leqslant}{\geqslant}\\
+  \codeshowD{\subsetneq}{\varsubsetneq} & \codeshowD{\subsetneqq}{\subseteqq}\\
+  \codeshowD{\nleq}{\ngeq} & \codeshowD{\nsim}{\nleqslant}\\
+\end{longtable}
+\begin{longtable}{l l | l l | ll | ll}
+  \codeshowD{\pm}{\mp}& \codeshowD{\cup}{\cap}\\
+  \codeshowD{\div}{\times}&\codeshowD{\vee}{\wedge}\\
+  \codeshowD{\ast}{\star}&\codeshowD{\sqcup}{\sqcap}\\
+  \codeshowD{\setminus}{\smallsetminus}&\codeshowD{\uplus}{\wr}\\
+  
+  \codeshowD{\dagger}{\ddagger}&\codeshowD{\bigtriangleup}{\bigtriangledown}\\
+  \codeshowD{\cdot}{\odot}&\codeshowD{\triangleleft}{\diamond}\\
+  \codeshowD{\oplus}{\ominus}&\codeshowD{\circ}{\amalg}\\
+  \codeshowD{\oslash}{\otimes}&\codeshowD{\bigcirc}{\bullet}
+\end{longtable}
+\subsubsection*{Logic and arrows}
+\hspace{-1cm}
+\begin{tabular}{l l | l l | ll | ll}
+  \codeshowD{\exists}{\nexists}&
+  \coden{\rightarrow} or \coden{\to} & $\to$ &
+  \coden{\leftarrow} or \coden{\gets} & $\gets$ \\
+  \codeshowD{\forall}{\neg}& \codeshowD{\mapsto}{\leftrightarrow}\\
+  \codeshowD{\land}{\lor}& \codeshowD{\leftrightharpoons}{\leftrightarrows}\\
+  \codeshowD{\top}{\bot}&\codeshowD{\implies}{\Rightarrow}\\
+  \codeshowD{\emptyset}{\varnothing}&\codeshowD{\iff}{\Leftrightarrow}\\
+  \codeshowD{\langle}{\rangle}& \codeshowD{\vert}{\Vert}\\
+  \codeshowD{\angle}{\backslash}&\codeshowD{\mid}{\|}\\
+  \codeshowD{\uparrow}{\downarrow} & \codeshowD{\Uparrow}{\Downarrow} \\
+  
+  \codeshowD{\nrightarrow}{\longmapsto} & \codeshowD{\varsubsetneq}{\Leftarrow}\\
+  \codeshowD{\leadsto}{\updownarrow} & \codeshowD{\longrightarrow}{\Longrightarrow}\\
+  \codeshowD{\nearrow}{\searrow} & \codeshowD{\swarrow}{\nwarrow}\\
+\end{tabular}
+\subsubsection*{Other symbols}
+\begin{longtable}{l l | l l | ll | ll | ll | ll}
+  \codeshowD{\partial}{\imath}&
+  \codeshowD{\Re}{\nabla}&
+  \codeshowD{\aleph}{\square}\\
+  
+  \codeshowD{\eth}{\jmath}&
+  \codeshowD{\Im}{\Box}&
+  \codeshowD{\beth}{\blacksquare}\\
+
+  \codeshowD{\hbar}{\ell}&
+  \codeshowD{\wp}{\infty}&
+  \codeshowD{\gimel}{\&}\\
+  
+  \codeshowD{\sharp}{\checkmark}&
+  \codeshowD{W}{W}&
+  \codeshowD{W}{WIP}
+\end{longtable}
+
+\subsubsection*{Misc}
+
+\begin{longtable}{l l}
+\mtshow{x \equiv a \pmod{b}}
+\mtshow{a \bmod{b}}
+\mtshow{\sqrt[5]{n}}
+\mtshow{\frac{a}{b}}
+\mtshow{\left( \frac{a}{b} \right)}
+\mtshow{\left\{ \frac{a}{b} \right.}
+\end{longtable}
+
+% add def eq

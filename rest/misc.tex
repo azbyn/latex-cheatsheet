@@ -1,0 +1,38 @@
+\section[Miscellaneous]{\st{Pointless} Miscellaneous}
+\subsection{Striketrough}
+\package{soul}
+\codeshow{\st{text}}
+
+\subsection{Page Numbers}
+\begin{longtable}{l l}
+  \justexplain{\thispagestyle{empty}}{no page number}
+  \justexplain{\pagenumbering{roman}}{roman i ii}
+  \justexplain{\pagenumbering{Roman}}{Roman I II}
+  \justexplain{\pagenumbering{arabic}}{arabic}
+  \justexplain{\pagenumbering{alph}}{alph - a b }
+  \justexplain{\pagenumbering{Alph}}{alph - A B }
+\end{longtable}
+
+\code{\pagenumbering} resets the counter,
+use \code{\setcounter{page}{7}} afterwards to set the counter
+
+It can be useful to do something like this:
+\begin{latex}
+\pagenumbering{roman}
+<The table of contents, introduction ...>
+\pagenumbering{arabic}
+\end{latex}
+
+\subsection{Self explanatory}
+\begin{latex}
+\include{smth.txt}
+\input{smth.txt} % same as include, but without a \clearpage in front
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+\clearpage
+\end{latex}
+
+

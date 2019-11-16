@@ -1,0 +1,35 @@
+\section{Math mode}
+\begin{itemize}
+\item \textbf{Inline} can be entered by using \code{$...$} or \code{\(...\)}, or by using
+  the environment \code{math}
+\item \textbf{Displayed} mode can be entered using \code{\[...\]} or with the environment
+  \code{displaymath}.\\
+  Using the environment \code{equation} automatically numbers the equation.\\
+  \code{equation*} and \code{displaymath} are functionally equivalent
+\end{itemize}
+\codeeg{\[F(x) = \int f(x)\, dx \]}\\
+\codeeg{$F(x) = \int f(x)\,dx$}
+
+Most spaces are ignored, and must be specified manually.
+\note{LaTeX complains if you leave empty lines in math mode.}
+
+Adding \code{\numberwithin{equation}{section}} will reset equation numbers every section.
+\code{chapter} may also be used.
+
+\subsection{Bold Math}
+\begin{example}
+  this doesn't work: \textbf{Text $f$}\\
+  this works: \textbf{Text} $\boldsymbol{f}$
+\end{example}
+\subsection{Font size}
+\begin{longtable}{l l }
+  \code{\displaystyle} & $\displaystyle \int$\\
+  \code{\textstyle} & $\textstyle \int$\\
+  \code{\scriptstyle} & $\scriptstyle \int$\\
+  \code{\scriptscriptsyle} & $\scriptscriptstyle  \int$
+\end{longtable}
+
+Declaring \code{\everymath{\displaystyle}} in the preamble will force \code{\displaystyle}
+in all math environments
+
+

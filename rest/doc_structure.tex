@@ -1,0 +1,117 @@
+\section{Document Structure}\label{docStructure}
+\subsection{Main structure}
+\begin{latex}
+\part{Part}
+\chapter{C} % not found in article
+\section{S}
+\subsection{SS}
+\subsubsection{SSS}
+\paragraph{P}
+\subparagraph{SP}
+\end{latex}
+
+Adding \code{[Short title]} will add that short name in the Table contents.
+
+Adding a \texttt{*} will not add the structure to Table of contents and will not
+number it.
+
+To add it to the Table of contents use:
+\code{\addcontentsline{toc}{section}{My name}}
+
+
+\subsection{Title page}
+\begin{minipage}[t]{0.49\textwidth}
+\begin{latex}
+% preamble:
+\title{\LaTeX{} CheatSheet}
+\author{\L{}ucasz Zieli\'nski
+ \thanks{Dzi\k{e}ki \'swiatu}}
+\date{\today}
+%first thing in document
+\begin{titlepage} 
+ \maketitle 
+\end{titlepage}
+\end{latex}
+\end{minipage}
+\hfill
+\fbox{
+\begin{minipage}[t][0.5\textwidth][t]{0.3535\textwidth}
+ %%\thispagestyle{empty}
+ %\begin{titlepage}%
+   \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
+   \begin{center}
+   \vfill
+   %\vspace{60pt}
+   { \Large {\LaTeX{} CheatSheet} \par}
+   \vspace{3em}
+   {\normalsize
+    \lineskip .75em
+    \begin{tabular}[t]{c}
+      Łucasz Zieliński\footnotemark[1]
+    \end{tabular}\par
+   }
+   {\normalsize \today \par}
+   \footnotetext[1]{Dzięki światu}
+   \end{center}
+   \vfill
+   \vfill
+ %\end{titlepage}%
+\end{minipage}
+}
+\hfill
+\(\)% not adding adding this makes the last hfill be ignored 
+
+\subsection{Appendix, abstract}
+\begin{latex}
+\appendix
+\chapter{something}
+bla
+
+\begin{abstract}
+Bla bla
+\end{abstract}
+\end{latex}
+
+\subsection{Bibliography}
+\begin{minipage}{0.6\textwidth}
+\begin{latex}
+% 99 = max num of entries
+\begin{thebibliography}{99}
+  \bibitem{author/19} The Author, A book, 2019
+\end{thebibliography}
+\end{latex}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\vspace*{-2.5cm}
+\begin{thebibliography}{99}
+  \bibitem{author/19} The Author, A book, 2019
+\end{thebibliography}
+\end{minipage}
+
+\subsubsection{Citing}
+\begin{latex}
+\hrulefill\\
+  Cite from bibliography\cite{author/19}.\\
+  Cite from bibliography\cite[Chapter VI, VII]{author/19}.
+\end{latex}
+
+\subsection{Index}
+In some editors the index must be compiled separately (with \texttt{Ctrl-Shift-I}).\\
+\begin{latex}
+%in preamble
+\usepackage{makeidx}
+\makeindex
+
+% in doc (at the end)
+\phantomsection
+% index is not added by default to tableofcontents
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+Add word to index: \index{Entry}
+\end{latex}
+
+\subsection{Pdfbookmark}
+\begin{latex}
+\pdfbookmark[1]{Cuprins}{Cuprins}
+\end{latex}

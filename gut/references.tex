@@ -1,0 +1,67 @@
+\section{References and labels}\label{labels}
+Requires \package{hyperref}.
+
+\subsection{Labels}
+\codeshow{\label{aLabel}}\\
+\codeshow{\ref{aLabel}}\\
+\codeshow{\ref*{aLabel}}\\
+\codeshow{\nameref{aLabel}}\\
+\codeshow{\nameref*{aLabel}}\\
+\codeshow{\pageref{aLabel}}\\
+\codeshow{\autoref{aLabel}}\\
+\codeshow{\hyperref[aLabel]{here}}\\
+% \codeshow{\hyperref{aLabel}}
+\codeshow{\url{run:/usr/bin/firefox}}\\
+\codeshow{\href{run:/usr/bin/firefox}{here}}\\
+\codeshow{\cite{author/19}}\\
+\codeshow{\cite[Chapter IV]{author/19}}\\
+\codeshow{\eqref{aLabel}}
+
+Adding "*" to \code{\...ref} will not create a clickable thing (the text is black).
+
+Not adding \code{\phantomsection} before a link or reference might not center the page properly\\
+e.g. \code{\phantomsection\label{bLabel}}
+
+
+\subsection{Web Links}
+\codeshow{\href{http://example.com/}{here}}\\
+\codeshow{\url{http://example.com/}}\\
+\codeshow{\href{mailto:my_addr@a.com}{my\_addr@a.com}}\\
+\code{\nolinkurl} makes it so \LaTeX{} doesn't complain about an invalid url\\
+\codeshow{\href{mailto:my_addr@a.org}{\nolinkurl{my_addr@a.org}}}
+
+\subsection{Settings}
+Using \code{\usepackage[hidelinks]{hyperref}} will make links black.
+\subsubsection{Short way}
+\begin{latex}
+\hypersetup{colorlinks=true, linkcolor=cyan, citecolor=green,
+  filecolor=black, urlcolor=blue}
+\end{latex}
+\subsubsectionNoncurs{Full way}
+\begin{latex}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keyword1, key2, key3}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan,          % color of external links
+    %if colorlinks=false:
+    linkbordercolor={1 0 0},% color of frame around internal links
+    citebordercolor={0 1 0},% color of frame around citations
+    urlbordercolor={0 1 1}  % color of frame around URL links
+}  
+\end{latex}
+\note{The explicit RGB specification is only allowed for the border colors (like linkbordercolor etc.), while the others may only assigned to named colors.}

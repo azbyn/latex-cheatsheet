@@ -1,0 +1,98 @@
+\section{Lists}
+
+There are 3 main environments to use lists: \coden{enumerate}, \coden{itemize}
+and \coden{description}.
+
+New items are inserted with \coden{\item[sym]}. 
+
+There's a default vertical space between items.
+This space can be modified by writing \code{\setlength{\itemsep}{5mm}} after \code{\begin{env}}.
+
+We can nest those a maximum of 4 times.
+
+\begin{example}
+\begin{enumerate}
+  \item Operating systems
+  \begin{enumerate}\setlength{\itemsep}{0mm}
+  \item[J.] Linux
+  \item Windows
+  \item DOS
+  \item BSD
+  \end{enumerate}
+\item Programing languages
+  \begin{description}
+    \item[1] \texttt{C++}
+    \item[b] \texttt{D}
+    \item[III] \texttt{F\#}
+  \end{description}
+\end{enumerate}
+\end{example}
+
+
+\subsection{\texttt{enumerate}}
+Items can be labeled (the other 2 can't).
+
+This redefines the labels names:
+\begin{latex}
+\renewcommand{\labelenumi}{\Roman{enumi}.}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+\renewcommand{\labelenumiv}{(\roman{enumiv})}
+\end{latex}
+
+We can redefine the numbering using:
+\begin{latex}
+\renewcommand{\theenumi}{\Roman{enumi}.}
+\renewcommand{\theenumii}{(\arabic{enumii})}
+\renewcommand{\theenumiii}{(\alph{enumiii})}
+\renewcommand{\theenumiv}{(\roman{enumiv})}
+\end{latex}
+
+\begin{example}
+\renewcommand{\theenumi}{Point \Alph{enumi}}
+\renewcommand{\labelenumi}{I \Alph{enumi}}
+\begin{enumerate}
+\item First\label{first}
+\item Second
+\end{enumerate}
+We reference an item \ref{first}
+\end{example}
+
+If we use the package \coden{enumitem} we can change the indent:
+
+\begin{example}
+\begin{enumerate}
+\item Level 1
+  \begin{enumerate}[leftmargin=0cm]
+    \item Level 2
+    \end{enumerate}
+\item Also Level 1
+  \begin{enumerate}
+    \item Also Level 2
+  \end{enumerate}
+\end{enumerate}
+\end{example}
+
+Using \coden{enumitem} also allows us to have two separate lists with continuous
+numbering:\\
+\begin{example}
+\begin{enumerate}
+\item First
+\end{enumerate}
+Some text
+\begin{enumerate}[resume]
+\item Second
+\end{enumerate}
+\end{example}
+
+\subsection{\texttt{itemize}}
+\texttt{itemize} can also have it's symbols changed:\\
+\begin{example}
+  \renewcommand{\labelitemi}{$\bigstar$}
+  \renewcommand{\labelitemii}{$\checkmark$}
+  \renewcommand{\labelitemiii}{$\sharp$}
+  \renewcommand{\labelitemiv}{$\maltese$}
+  \begin{itemize}
+    \item Foo
+\end{itemize}
+\end{example}

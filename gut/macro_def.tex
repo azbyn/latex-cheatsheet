@@ -1,0 +1,26 @@
+\sectionNoncurs{Macro definitions}
+\begin{latex}
+  \newcommand{\mat}[1]{\mathcal{M}_{#1}(\mathbb{R})}
+% this "*" makes it that it complains if a \par is encountered
+\newcommand*{\dx}[1][x]{\, \mathrm{d}#1}
+\renewcommand{\contentsname}{Cuprins}
+
+
+\usepackage{xparse}
+% O, o optional, m= mandatory
+\DeclareDocumentEnvironment{problema}{O {1} o m}{
+  \begin{enumerate}[leftmargin=*]
+    \addtocounter{enumi}{#1}
+    \item
+}{
+  \end{enumerate}
+  \IfValueT{#2}{\cppcode{#2}}
+}
+\newenvironment{\name}{begin}{end}
+
+\end{latex}
+
+Using \code{\renewcommand} inside an environment will make that definition local 
+to the environment.
+
+\note{remember to add "\code{\\}" before the command name (ie. not \code{\newcommand{foo}{}})}

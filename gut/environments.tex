@@ -1,0 +1,65 @@
+\section{Environments}
+\subsection{Figure}\label{figure}
+\begin{latex}
+\begin{figure}[!hbt]
+  \includegraphics[width=\textwidth]{plot}
+  \caption{Caption}\label{plot}
+\centering
+\end{figure}
+\end{latex}
+\note{You can use \code{wrapfigure} for wraping text around a figure. see \nameref{wraptable}}
+
+\begin{longtable}{l l}
+  \justexplain{h}{place here - kinda}
+  \justexplain{h!}{place here - more strict}
+  \justexplain{t}{top of the page}
+  \justexplain{b}{bottom of the page}
+  \justexplain{p}{on a special page}
+\end{longtable}
+
+\subsection{Text alignment}
+
+%\begin{center} \code{\begin{center} ... \end{center}}  \end{center}
+%\begin{flushleft} \code{\begin{flushleft} ... \end{flushleft}} \end{flushleft}
+%\begin{flushright} \code{\begin{flushright} ... \end{flushright}} \end{flushright}
+
+\code{\begin{center} Centered \end{center}} \\
+\code{\begin{flushleft} Left \end{flushleft}} \\
+\code{\begin{flushright} Right \end{flushright}}
+
+\subsection{Mini Page} %http://www.sascha-frank.com/latex-minipage.html
+Useful for putting things side by side
+\subsubsection{Usage}
+\begin{latex}
+\begin{minipage}[adjusting]{width of the minipage}
+ Text | Images | ... 
+\end{minipage} 
+\end{latex}
+\subsubsection{Adjustment}
+When adjusting the choices is: \coden{c} (centers), \coden{t} (top) and \coden{b} (bottom).
+By default, \coden{c} is used for centering. It is aligned by \code{t} and/or \code{b}
+at the highest (top line) and/or at the lowest line (bottom line).
+\subsubsection{Further options}
+Besides there are still further options, which however in practical application the minipage does not play a role like the height and the adjustment (again \coden{c}, \coden{t} and \coden{b}) within the minipage.
+
+Example of further options:
+\code{\begin{minipage}[t][5cm][b]{0,5\textwidth}}
+
+  This minipage now has a defined height of 5cm, and the content will now be aligned to the bottom of the minipage.
+\subsubsection{Hint}
+
+A mistake that is often made is, there is a blank line between the \code{\end{minipage}} and
+\code{\begin{minipage}} left. Then the pages are no longer together.
+  
+\subsubsection{Example}
+\begin{latex}
+\begin{minipage}[t]{0.3\textwidth}
+  \includegraphics[width=\textwidth]{pic1}
+\end{minipage}
+
+\end{latex}
+
+\subsection{Others}
+For \coden{abstract}, \coden{titlepage}, \coden{thebibliography}, see \nameref{docStructure}.
+
+For math stuff, see \nameref{math}\footnote{Natürlich}.

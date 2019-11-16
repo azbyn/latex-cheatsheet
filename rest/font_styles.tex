@@ -1,0 +1,48 @@
+\section{Font styles}
+\subsection{Text mode}
+\begin{longtable}{l | l | l}
+  \explain{\textnormal{Normal}}{The default font}
+  \explain{\textrm{Roman}}{Roman font}
+  \explain{\textsf{Sans}}{Sans serif}
+  \explain{\texttt{Typewriter}}{Teletype - monospace font}
+\hline
+  \explain{\emph{Emph \emph{nested}}} {Emphasis. Might be nested}
+  \explain{\textbf{Bold}} {Boldface}
+  \explain{\textmd{Medium}}{Medium - default}
+\hline
+  \explain{\textup{Upright}}{Upright shape - default}
+  \explain{\textit{abcx - Italics}}{Italic shape}
+  \explain{\textsl{abcx - Slanted}}{Slanted shape}
+\hline
+  \explain{\textsc{Small Caps}}{Small Capitals}
+  \explain{\uppercase{Uppercase $F=x$}}{Uppercase}
+  \explain{\lowercase{Lowercase $F=x$}}{Lowercase}
+\hline
+  \explain{\tiny{tiny}}{ tiny}
+  \explain{\scriptsize{script}}{scriptsize}
+  \explain{\footnotesize{footnote}}{footnote}
+  \explain{\small{small}}{small}
+  \explain{\normalsize{normalsize}}{normal - default}
+  \explain{\large{large}}{large}
+  \explain{\Large{Large}}{Large}
+  \explain{\LARGE{LARGE}}{LARGE}
+  \explain{\huge{huge}}{huge}
+  \explain{\Huge{Huge}}{Huge}
+\end{longtable}
+
+\subsection{Math mode}
+
+\begin{longtable}{l | l | l}
+  
+  \explainMFont{\text}{Enter text mode}
+  \explainMFont{\mathnormal}{Default}
+  \explainMFont{\mathrm}{Roman - one word functions}
+  \explainMFont{\mathit}{Italics - words spaced more naturally}
+  \explainMFont{\mathbf}{Boldface}
+  \explainMFont{\mathsf}{Sans serif}
+  \explainMFont{\mathtt}{Teletype - monospaced}
+  \explainMFont{\mathfrak}{Fraktur}
+  \explainMFontUpper{\mathcal}{Calligraphy - of note $\mathcal{M}$atrix}
+  \explainMFontUpper{\mathbb}{Blackboard bold - of note $\mathbb{R}$}
+  \explainMFontUpper{\mathscr}{Script - Super  $\mathscr{F}$\!{}ancy}
+\end{longtable}

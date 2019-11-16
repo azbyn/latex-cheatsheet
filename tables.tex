@@ -1,0 +1,305 @@
+\section{Tables}
+\subsection{The \texttt{tabular} environment}
+\begin{latex}
+\begin{tabular}[pos]{table spec}
+\end{latex}
+  
+\note{a very common mistake is not defining the centering (ie \code{\begin{tabular}{l l}\end{tabular} } ) }
+
+The \coden{table spec} argument tells LaTeX the alignment to be used in each column and the vertical lines to insert.
+
+The number of columns isn't specified, since it's inferred by looking at the number of arguments provided.
+
+Things you can add inside \coden{table spec}:
+
+\begin{longtable}{l l}
+  \justexplain{l}{left justified column}
+  \justexplain{c}{center justified column}
+  \justexplain{r}{right justified column}
+  \justexplain{p{'width'}}{paragraph column with text vertically aligned at the top }
+  \justexplain{m{'width'}}{paragraph column with text vertically aligned in the middle (requires array package) }
+  \justexplain{b{'width'}}{paragraph column with text vertically aligned at the bottom (requires array package) }
+  \justexplain{|}{vertical line}
+  \justexplain{||}{double vertical line}
+\end{longtable}
+
+To specify a font format (such as bold, italic, etc.) for an entire column,
+you can add \code{>{\format}} before you declare the alignment.
+For example \code{ \begin{tabular}{ >{\bfseries}l c >{\itshape}r }}.
+This requires the package \coden{array}.
+
+\begin{example}
+\begin{tabular}{|l|c|r || p{1cm}|m{1cm}|b{1cm}|}
+l & c & r & p & m &b\\
+\hfill l \hfill & \hfill c &\hfil r \hfil &
+\hfill p \hfill & \hfill m &\hfil b \hfil\\
+aaa & bbb & ccc &
+AAA BBB CCC DDD&
+AAA BBB CCC DDD&
+AAA BBB CCC DDD\\
+\end{tabular}
+\end{example}
+
+By default, if the text in a column is too wide for the page, LaTeX won’t automatically wrap it.
+Using \coden{p{'width'}} you can define a special type of column which will wrap-around the text as in a normal paragraph.
+
+In \coden{p} \coden{m} \code{b} the text is always left aligned. we could use \code{\hfill} to override this,
+sometimes \code{\hfil} can also be useful.
+
+Multiple columns can be defined at the same time using \code{*{count}{table spec}}.
+E.g:\\
+\begin{example}
+\begin{tabular}{*{2}{l} *{2}{|c} |}
+a & b & c& d\\
+aaa & bbb & ccc& ddd
+\end{tabular}
+\end{example}
+
+The optional parameter \code{pos} specifies the vertical position relative to the baseline of the surrounding text.
+You can use:\\
+\begin{tabular}{l l}
+\justexplain{b}{bottom}
+\justexplain{c}{center (default)}
+\justexplain{t}{top}
+\end{tabular}
+
+For adding horizontal lines we use \code{\hline} or \code{\hline\hline} for a double line.
+                     
+\begin{example5}
+Foo \quad
+\begin{tabular}[b]{|l|| r | c|}\hline
+Name & Math & LaTeX \\[0.3cm]\hline\hline
+\L{}ucasz & 8 & 9 \\\hline
+Wojtek & 12 & 1 \\\hline
+\end{tabular} bar \ldots
+\end{example5}
+
+\begin{examplef}
+Foo \quad
+\begin{tabular}[c]{|m{2cm}|| m{1.5cm} | m{1.5cm}|}\hline
+Country & Flammen\-werfer & Panzerkampfwagen  \\\hline\hline
+Russia & - & - \\\hline
+Germany & \checkmark & \checkmark \\\hline
+\end{tabular} bar \ldots
+\end{examplef}
+
+\subsection{\texttt{wraptable}}\label{wraptable}
+This requires the package \coden{wrapfig}
+Usage:
+\begin{latex}
+\begin{wraptable}[number_of_lines]{pos}{width}    
+\end{latex}
+
+\begin{itemize}
+\item \code{number_of_lines} The number of lines. May be omitted.
+\item \code{pos} The horizontal alignment; you can use \code{l} or \code{r}.
+\item \code{width} Width to be reserved for the table.
+\end{itemize}
+
+\begin{examplef}
+We have a nice table below:
+
+\begin{wraptable}[9]{r}{12cm}
+\vspace{-11pt}
+\hspace{20pt}
+\begin{tabular}[c]{|l|| *9{l|} }\hline
+  Country & Best song & Known for \\\hline\hline
+  Russia & Siuda Kalatuszek & Putin's lifetime rule \\\hline
+  Serbia & Crni Bombarder & Rakija and Kosovo \\\hline
+  Poland & Hej soko\l{}y & Bisons and their grass \\\hline
+  Finland & S\"akkij\"arven polkka & Suomi Perkele \\\hline
+  Germany & Westerwaldlied & Losing both world wars \\\hline
+\end{tabular}
+\hspace{5pt}
+\end{wraptable}
+I have no idea what to put here, so I'll put this:
+Nuapurista kuulu se polokan tahti jalakani pohjii kutkutti.
+Ievan \"aiti se tytt\"o\"os\"a vahti vaan kyll\"ah\"an Ieva sen jutkutti,
+sill\"a ei meit\"a silloin kiellot haittaa kun my\"o tanssimme laiasta laitaan.
+Salivili hipput tupput t\"appyt \"appyt tipput hilijalleen.
+\end{examplef}
+
+\note{We can't use \code{wraptable} inside theorem environments}
+
+\note{We can use \code{wrapfigure} with a similar syntax for inserting figures}
+
+\code{\cline{i-j}} draws a line from column \coden{i} to \coden{j}.
+
+\subsection{\code{multirow}s and \code{multicolumn}s}
+This requires the package \coden{multirow}.
+Usage:\
+\begin{latex}
+  \multicolumn{count}{alignment}{content}
+  \multirow{count}{width}{content}
+\end{latex}
+
+Where:
+\begin{itemize}
+\item \code{alignment} can be \coden{l}, \coden{c}, \coden{r}.
+\item \code{width} is the minimum cell width, can be \code{*} to be adjusted automatically.
+\end{itemize}
+
+\begin{examplef}
+\begin{center}
+\begin{tabular}{| l | *{3}{l|}l |} \hline
+  \multirow{2}{*}{Country} & \multicolumn{3}{c|}{Food} & \multirow{2}{*}{Beverage}\\
+  \cline{2-4}              & Soup & Main dish & Dessert & \\ \hline\hline
+  Germany & Biersuppe & Bratwurst & Lebkuchen & Weizenbier\\\hline
+  Russia  & Borscht & Stroganoff & Syrniki & Kvass\\\hline
+  Poland  & Ch\l{}odnik & Go\l{}\k{a}bki & P\k{a}czek & Gorza\l{}ka \\\hline
+\end{tabular}
+\end{center}
+\end{examplef}
+
+If we want to set the min width by writing \code{\multirow{2}{3cm}{Country}} we need to use
+\code{\hfill} (or \code{\hfil}) to center it. \code{\centering} can also be used
+
+\begin{example}
+\begin{tabular}{| l | l|} \hline
+  \multirow{2}{3cm}{\centering Country} & A \\
+  \cline{2-2}&              B \\ \hline\hline
+  
+  \multirow{2}{3cm}{\hfill Country \hfill} & A \\
+  \cline{2-2}&              B \\ \hline\hline
+  
+  \multirow{2}{3cm}{\hfil Country \hfil} & A \\
+  \cline{2-2}&              B \\ \hline\hline
+  
+  \multirow{2}{3cm}{Country} & A \\
+  \cline{2-2}&              B \\ \hline
+\end{tabular}
+\end{example}
+
+\subsection{\texttt{arraystrectch}}
+
+Redefining spacing between lines \code{\renewcommand{\arraystretch}{factor}}
+
+\begin{example}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{| l | l|} \hline
+  \multirow{2}{3cm}{\centering Country} & A \\
+  \cline{2-2}&              B \\ \hline
+\end{tabular}
+\end{example}
+
+If we want to scale the table: requires \code{graphics}\\
+\begin{example}
+  \resizebox{7cm}{1.4cm}{
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{|l|l||c|c||*{3}{c|}}\hline
+    \multicolumn{2}{|c||}{ }&
+    \multicolumn{2}{c||}{Regimul disciplinei}&
+    \multicolumn{3}{c|}{Numar de ore/sapt.}\\
+    \cline{3-7} \multicolumn{2}{|c||}{ } &
+    Obligatorie& Optionala & Curs &
+    Sem.  & Lab.\\ \hline\hline
+    \multirow{3}{*}{Sem.  I} & Disciplina 1 &
+    \checkmark& -- & 3 & 2 & 1\\ \cline{2-7}&
+    Disciplina 2 &\checkmark & -- & 2 &
+    1 & 1\\\cline{2-7}
+    & Disciplina 3 & -- &\checkmark &
+    2 & 2 & -\\\cline{1-7}
+    \multirow{2}{*}{Sem.  II} &
+    Disciplina 4 &\checkmark&
+    -- & 2 & - & 3\\ \cline{2-7}
+    & Disciplina 5 & -- &\checkmark &
+    2 & 2 & -\\ \hline
+  \end{tabular}
+\renewcommand{\arraystretch}{1}
+}
+\end{example}
+
+\begin{examplef}
+\begin{tabular}{cc|c|c|c|c|l}
+\cline{3-6}
+& & \multicolumn{4}{ c| }{Primes} \\ \cline{3-6}
+& & 2 & 3 & 5 & 7 \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{2}{*}{Powers} } &
+\multicolumn{1}{ |c| }{504} & 3 & 2 & 0 & 1 &     \\ \cline{2-6}
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{540} & 2 & 3 & 1 & 0 &     \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{2}{*}{Powers} } &
+\multicolumn{1}{ |c| }{gcd} & 2 & 2 & 0 & 0 & min \\ \cline{2-6}
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{lcm} & 3 & 3 & 1 & 1 & max \\ \cline{1-6}
+\end{tabular}
+\end{examplef}
+
+\subsection{Colored tables}
+This requires the package \coden{colortbl}.
+
+This defines: \code{\rowcolor{red}}, \code{\cellcolor{blue}} and
+\code{\columncolor{MidnightBlue}}
+
+\begin{example}
+\begin{tabular}{l | l | >{\columncolor{red}} l | l}
+\rowcolor{red} A & B  &\cellcolor{blue} C & D\\ 
+%A & \rowcolor{blue} A & C \\ 
+A & \cellcolor{green} B & C & D\\ 
+A & B & C & D\\ 
+\end{tabular}
+\end{example}
+
+\subsection{\texttt{table} environment}
+This is very similar to \texttt{figure} (page \pageref{figure}).
+\begin{latex}
+\begin{table}[pos]
+\end{latex}
+
+Where \coden{pos} can be \coden{h} - here, \coden{t} - top, \coden{b} - bottom.
+It's useful to set \coden{pos} to \coden{!hbt} meaning force it here, if not possible put it on the bottom,
+else at the top.
+
+\begin{examplefr}
+\begin{centering}
+\begin{table}[h]
+  \caption{A nice table}\label{nice_table}
+  \begin{tabular}{l | l}
+    this & is\\
+    vert & nice\\
+  \end{tabular}
+\end{table}
+\end{centering}
+
+This is a nice table: \ref{nice_table}.
+\end{examplefr}
+
+\note{\coden{\listoftable} will print a list of tables}
+
+\subsection{\texttt{tabularx}}
+This requires the package \coden{tabularx}.
+
+It stretches the table to 
+\begin{examplef}
+\begin{tabularx}{\textwidth}{ |X|X|X|X| }
+  \hline
+  label 1 & label 2 & label 3 & label 4 \\
+  \hline 
+  item 1  & item 2  & item 3  & item 4  \\
+  \hline
+\end{tabularx}
+\end{examplef}
+
+\subsection{\texttt{longtable}}
+This requires the package \coden{longtable}.
+
+\begin{latex}
+\begin{longtable}[pos]{table spec}
+\end{latex}
+
+Does everything that \coden{tabular} does and more:
+\begin{itemize}
+\item can be split on multiple pages
+\item can be labeled
+\item is centered (by default), by setting the optional argument \coden{pos} to \coden{r} or \coden{l} we can change this
+\item can have captions
+\end{itemize}
+
+\begin{example}
+\begin{longtable}{l l}\label{longTable}
+  We finally & finished tables \\
+  yay & yay \\
+\end{longtable}
+\bigskip
+Table \ref{longTable} is a nicer table.
+\end{example}

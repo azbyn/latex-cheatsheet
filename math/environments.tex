@@ -1,0 +1,221 @@
+\section{Environments}
+\note{Adding \code{\nonumber} to an otherwise numbered environments cancels the numbering.}\\
+\note{Adding more white space than needed inside \code{align} and \code{aligned} makes latex complain.}
+
+Since ``a picture is worth a thousand words'', just look at this:
+
+\subsection{align}
+Writing \code{\allowdisplaybreaks} in the preamble allows splitting an equation written in \code{align} on multiple pages.
+
+\begin{example}
+\begin{align}
+  a & = 3\\
+    & = 2 + 1 \nonumber \\
+    & = 2 + \sigma(0)
+\end{align}
+\end{example}
+
+Adding small interjections to align:\\
+\begin{example}
+\begin{minipage}{3in}
+\begin{align*}
+\intertext{If}
+   A &= \sigma_1+\sigma_2\\
+   B &= \rho_1+\rho_2\\
+\intertext{then}
+C(x) &= e^{Ax^2+\pi}+B
+\end{align*} 
+\end{minipage}
+\end{example}
+
+\subsection{aligned}
+Like align but used inside math mode. Useful for numbering multiple lines once.
+
+\begin{example}
+\begin{equation}
+\begin{aligned}
+  a & = 3\\
+    & = 2 + \sigma(0)
+\end{aligned}
+\end{equation}
+\end{example}
+
+\subsection{eqnarray}
+People on the internet say ``don't use \code{eqnarray}'' so we won't talk about it.
+
+\subsection{subequations}
+\begin{example}
+\begin{subequations}
+\begin{align}
+  a &= 3\\
+  &= 2 + \sigma(0)
+\end{align}
+\end{subequations}
+\end{example}
+
+or:
+
+\begin{example}
+\begin{subequations}
+\begin{equation}
+  a = 3\label{blasphemy}
+\end{equation}
+Therefore:
+\begin{equation}
+  \int_0^1\sqrt{1-x^2} dx = \frac{3}{4}
+\end{equation}
+\end{subequations}
+
+The equation \eqref{blasphemy} %(\ref{blasphemy})
+is obviously false\footnote{
+  Unless you are an engineer}.
+\end{example}
+
+
+\subsection{cases}
+Useful for functions with multiple branches.
+
+\begin{example}
+\[f(x) =
+\begin{cases}
+  \int\frac{\sin(x)}{x},&\text{daca } x \neq 0,\\
+  1,&\text{daca } x=0.
+\end{cases}
+\]
+\end{example}
+
+With displaystyle:\\
+\begin{example}
+\[f(x) =
+\begin{dcases}
+  \int\frac{\sin(x)}{x},&\text{daca } x \neq 0,\\
+  1,&\text{daca } x=0.
+\end{dcases}
+\]
+\end{example}
+
+If there's a lot of plain text on the right\footnote{same goes for \code{cases*}}:\\
+\begin{example}
+\[f(x) =
+  \begin{dcases*}
+    \int \frac{\sin(x)}{x},&daca $x \neq 0$,\\
+    1,& daca $x=0$.
+  \end{dcases*}
+\]
+\end{example}
+
+
+\newcommand{\parti}[2]{\frac{\partial #1}{\partial #2}}
+Nice spacing:\\
+\begin{example}
+%\newcommand{\parti}[2]{\frac{\partial #1}
+%  {\partial #2}}
+\[f(x, y) =
+\begin{dcases}
+  \parti{g}{x}\,,&\text{daca } x y \geq 0,\\[0.5em]
+  \parti{g}{y}\,,&\text{daca } x y < 0,
+\end{dcases}
+\]
+\end{example}
+
+vs\\
+\begin{example}
+\[f(x, y) =
+\begin{dcases}
+ \parti{g}{x},&\text{daca } x y \geq 0,\\
+ \parti{g}{y},&\text{daca } x y < 0,
+\end{dcases}
+\]
+\end{example}
+
+
+
+\subsection{matrix}
+For writing matrices with more columns (default is 10):
+\code{\setcounter{MaxMatrixCols}{15}}
+
+\begin{tabular}{|l|l|}
+  \hline
+  Environment name & Surrounding delimiter\\
+  \hline
+pmatrix & $( )$\\
+bmatrix & $[ ]$\\
+Bmatrix & $\{ \}$\\
+vmatrix & $| |$\\
+Vmatrix & $\Vert \Vert$\\
+  \hline
+\end{tabular}
+
+\begin{example}
+\[
+A_{m,n} = 
+ \begin{pmatrix}
+  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+\end{pmatrix}
+\]
+\end{example}
+
+Nicer spacing:\\
+\begin{example}
+\begin{equation*}
+  \begin{bmatrix*}[r]
+    x    & -y+y' & z+z'\medskip  \\
+    u    &  v    & w   \medskip  \\
+    -r-r'&  s    & -t
+  \end{bmatrix*}
+\end{equation*}
+\end{example}
+
+\code{hline} adds a horizontal line. Adding a \code{|} like below adds a vertical line.\\
+\begin{example}
+\[
+\begin{array}{c|c}
+  1 & 2 \\ 
+  \hline
+  3 & 4
+ \end{array}
+\]
+\end{example}
+
+\begin{example}
+\[
+M = \bordermatrix{~ & x & y \cr
+                  A & 1 & 0 \cr
+                  B & 0 & 1 \cr}
+\]
+\end{example}
+
+\begin{example}
+A matrix in text must be set smaller:
+$\bigl(\begin{smallmatrix}
+a&b \\ c&d
+\end{smallmatrix} \bigr)$
+to not increase leading in a portion of text.
+\end{example}
+
+
+\begin{example}
+\[
+  \boldsymbol{\beta} =
+     (\beta_1,\beta_2,\dotsc,\beta_n)
+\]
+\end{example}
+
+Adding a "*" after the name allows us to specify alignment:
+
+\begin{example}
+\[
+\begin{matrix}
+  -1 & 3 \\
+  2 & -4
+ \end{matrix}
+ =
+ \begin{matrix*}[r]
+  -1 & 3 \\
+  2 & -4
+ \end{matrix*}
+\]
+\end{example}

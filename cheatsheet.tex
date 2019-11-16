@@ -1,8 +1,18 @@
 \documentclass[11pt,a4paper]{report}
 
 \usepackage{minted}
+\usepackage{extarrows}
+\usepackage{graphics}
+\usepackage{enumitem}
 
-\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{tabularx}
+
+\usepackage{wrapfig}
+\usepackage{multirow}
+
+\usepackage{mathdots}
+%\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{mathrsfs}
@@ -21,22 +31,125 @@
 \usepackage{geometry}
 
 \usepackage{soul}
+\usepackage{xfrac}
 % \newcommand{\sout}[1]{#1}
 
 \usepackage{combelow}
+
+\usepackage{array}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
 \definecolor{bg}{gray}{0.96}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+
+\usepackage{showexpl}
+\lstdefinestyle{ourstyle}{
+    backgroundcolor=\color{bg},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    texcsstyle=*\color{codepurple},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+}
+ 
+\lstset{language=[LaTeX]Tex,
+  style=ourstyle,
+}
+
+\newenvironment{example5}%
+  {\VerbatimEnvironment
+    \begin{VerbatimOut}{tmp/eqnexample.tmp}}%
+    {\end{VerbatimOut}%
+    \noindent
+    \begin{minipage}{0.5\textwidth}%
+    \latexFile{tmp/eqnexample.tmp}%
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}\setlength{\parindent}{0.5cm}%
+    \input{tmp/eqnexample.tmp}%
+    \end{minipage}%
+  }
+  
+\newenvironment{examplefr}%
+  {\VerbatimEnvironment
+    \begin{VerbatimOut}{tmp/eqnexample.tmp}}%
+    {\end{VerbatimOut}%
+    \noindent
+    \latexFile{tmp/eqnexample.tmp}%
+    \input{tmp/eqnexample.tmp}%
+  }
+\newenvironment{examplef}%
+  {\VerbatimEnvironment
+    \begin{VerbatimOut}{tmp/eqnexample.tmp}}%
+    {\end{VerbatimOut}%
+    \noindent
+    \begin{minipage}{\textwidth}%
+    \latexFile{tmp/eqnexample.tmp}%
+    \end{minipage}
+    \begin{minipage}{\textwidth}\setlength{\parindent}{0.5cm}%
+    \input{tmp/eqnexample.tmp}%
+    \end{minipage}%
+  }
+\newenvironment{example}%
+  {\VerbatimEnvironment
+    \begin{VerbatimOut}{tmp/eqnexample.tmp}}%
+    {\end{VerbatimOut}%
+    \noindent
+    \begin{minipage}{0.6\textwidth}%
+    \latexFile{tmp/eqnexample.tmp}%
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}\setlength{\parindent}{0.5cm}%
+    \input{tmp/eqnexample.tmp}%
+    \end{minipage}%
+  }
+
+
 %\definecolor{bg}{HTML}{F0F0F0}
-\newmintinline[code]{latex}{bgcolor=bg}
-\newminted[latex]{latex}{bgcolor=bg}
+\newmintinline[code]{latex}{bgcolor=bg,
+}
+\newminted[latex]{latex}{bgcolor=bg,
+}
+\newmintedfile[latexFile]{latex}{bgcolor=bg,
+  %linenos,
+  %frame=rightline
+}
+%\newenvironment{example}{\begin{LTXexample}}{\end{LTXexample}}
+
+%\renewcommand{\code}[1]{\verbclstinlineode{#1}}
+
+%\newcommand{\coden}[1]{\ceo texttt{#1}}
+%\newcommand{\coden}[1]{\lstinline{#1}}
+\newcommand{\coden}[1]{\code{#1}}
+\newcommand{\keyword}[1]{\coden{#1}}
+
+\newcommand{\codeshowD}[2]{\coden{#1} & $#1$ & \coden{#2} & $#2$}
+\newcommand{\codeshowB}[3]{\coden{#1} & $\displaystyle#1$ &
+\coden{#2} & $\displaystyle #2$ &
+\coden{#3} & $\displaystyle #3$\\}
 
 \newcommand{\package}[1]{\code{\usepackage{#1}}\label{#1}}
 \newcommand{\noncurs}{\hspace{.5cm}$\notin \mathscr{C}$}
 
+
+\newcommand{\mtshow}[1]{\code{#1} & $#1$ \\}
+\newcommand{\dmtshow}[1]{\code{#1} & $\displaystyle #1$ \\}
+
 \newcommand{\explain}[2]{\code{#1} & #1 & #2\\}
+\newcommand{\explainC}[2]{\code{#1} & #1 & #2 &}
 \newcommand{\justexplain}[2]{\code{#1} & #2\\}
 \newcommand{\explainM}[2]{\code{#1} & $#1$ & #2\\}
 
@@ -44,12 +157,15 @@
 \newcommand{\explainMFontUpper}[2]{\explainM{#1 {ABC\ I\ DEF}}{#2 (uppercase only)}}
 
 \newcommand{\codeshow}[1]{\code{#1} - #1}
+\newcommand{\mcodeshow}[1]{\code{#1} - $#1$}
+\newcommand{\dmcodeshow}[1]{\code{#1} - $\displaystyle #1$}
 \newcommand{\codeeg}[1]{e.g. \codeshow{#1}}
 
 \newcommand{\packageSubsection}[2]{\subsection[#1]{#1 - \code{#2}}}
 \newcommand{\subsubsectionNoncurs}[1]{\subsubsection[#1]{#1 \noncurs}}
 \newcommand{\subsectionNoncurs}[1]{\subsection[#1]{#1 \noncurs}}
-\newcommand{\disclamer}[1]{\textbf{Disclamer:} #1}
+\newcommand{\sectionNoncurs}[1]{\section[#1]{#1 \noncurs}}
+\newcommand{\note}[1]{\textbf{Note:} #1}
 
 %\usepackage[romanian]{babel}
 
@@ -65,526 +181,73 @@
 
 \renewcommand{\indexname}{I\lowercase{ndice}}
 
-%\renewenvironment{longtable}[1]{\begin{longtable}[l]{#1}}{\end{longtable}}
+\usepackage{amsthm}
+\renewcommand*{\proofname}{\noindent\textbf{Demonstra\c{t}ie.}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\theoremstyle{plain} %the default style
+\newtheorem{theo}{Teorema}
+\newtheorem{corol}[theo]{Corolarul}
+\newtheorem{prop}{Propozi\c{t}ia}[section]
+\theoremstyle{definition}
+\newtheorem{defin}{Defini\c{t}ia}[section]
+\newtheorem{exem}{Exemplul}[section]
+
+\renewcommand{\bibname}{Bibliografie}
 
 \title{\LaTeX{} Cheatsheet}
 \author{Łucasz Zieliński\thanks{Dzięki światu}}
 \date{\today}
 
+\newcommand*{\R}{\mathbb{R}}
 \makeindex
 %%%%%%%%%%%%%%
 \begin{document}
-
-\begin{titlepage}
-\maketitle
-\end{titlepage}
-\tableofcontents
-%\newpage
-
+\include{title}
 
 \chapter{Das gute Zeug}
-\section{Document classes \& differences}
-\code{\documentclass[...]{report, article, book, beamer}}\\
-e.g. \code{\documentclass[11pt,a4paper]{report}}
+\input{gut/doc_classes}
+\input{gut/packages}
+\input{gut/environments}
+\input{gut/romanian_names}
+\input{gut/macro_def}
+\input{gut/fancy_headers}
+\input{gut/references}
+\input{gut/footnotes}
 
-\subsection{Differences with regard to available commands and environments}
-\begin{itemize}
-\item \book and \report feature the \code{\chapter} sectioning command, while \article doesn't.
-\item In \book and \report, \code{\appendix} will cause \code{\chapter}s to be typeset as "Appendix X" instead of "Chapter X". For article, this isn't applicable.
-\item \book and \report will start a new page for \code{\part}s , while \article won't.
-\item \book offers the \code{\frontmatter}, \code{\mainmatter}, and \code{\backmatter} commands to control page numbering (Roman for the front matter, arabic elsewhere) and numbering of sectioning titles (no numbering in the front and back matter), while \report and \article don't.
-\item \book \textit{doesn't} offer the \code{abstract} environment, while \report and \article \textit{do}.
-\end{itemize}
-\subsection{Differences with regard to default settings}
-\begin{itemize}
-  \item The \book class uses the \code{twoside} class option (which means different margins and headers/footers for even and odd pages), while \report and \article use \code{oneside}.
-  \item The \book class uses the \code{twoside} class option (which means different margins and headers/footers for even and odd pages), while \report and \article use \code{oneside}.
-  \item \book uses \code{openright} (new parts and chapters start on "right" pages, adding a blank page before if necessary), while \report uses \code{openany}. (Note that "right" means an odd page in twoside mode, but any page in oneside mode.) For \article, the distinction between \code{openright} and \code{openany} isn't applicable.
-    
-  \item \book uses the \code{headings} pagestyle for non-chapter-starting pages, while \report and \article always use \code{plain}.
-    
-  \item \book and \report use \code{titlepage} (the title page and -- if applicable -- the \code{abstract} environment will be typeset on pages of their own), while \article uses \code{notitlepage}.
-    
-  \item For \book and \report, the lowest-level sectioning command which is numbered and incorporated into the table of contents is \code{\subsection}, while for article it is \code{\subsubsection}.
-    
-  \item \book and \report will use the arguments of \code{\chapter}s and \code{\section}s for running headings (if such headings are present), while \article will use \code{\section}s and \code{\subsection}s.
-    
-  \item \book and \report will number floats (figures, tables etc.), equations, and footnotes per chapter, while \article will number them continuously. Note that footnotes -- even when numbered per chapter -- do not feature a chapter prefix.
-
-  \item \book and \report will use \code{\bibname} (which defaults to "Bibliography") for the heading of bibliographic references, while article will use \code{\refname} (which defaults to "References").
-\end{itemize}
-
-\section{Packages}
-\begin{enumerate}
-\item Math:\\
-  \package{amsmath} \\
-  \package{mathtools} \\
-  \package{amssymb}\\
-  \package{amsfonts}\\
-  \package{mathrsfs} - for \code{\mathscr} \noncurs
-
-\item Fancy page style:\\
-  \package{fancyhdr}
-
-\item Color:\\
-  \package{color}\\
-  or even better \code{\usepackage[dvipsnames]{xcolor}}
-
-\item Images:\\
-  \package{graphicx}\\
-  \package{epstopdf}
-
-\item Unicode - fancy quotes:\\
-  \code{\usepackage[T1]{fontenc}}\\
-  \code{\usepackage[utf8]{inputenc}} \noncurs
-
-\item Index requires \texttt{Ctrl-Shift-I} in WinEdt: \\
-  \package{makeidx}
-
-\item Hyper references:\\
-  \package{hyperref}
-
-\item Colums: \noncurs\\
-  \package{multicol}
-
-\item Setting title formatting (font size, centering, etc.):\\
-  \package{sectsty}
-  
-\end{enumerate}
-
-\section{Package ussage}
-\packageSubsection{Fancy Quotes}{\usepackage[T1]{fontenc}}
-\code{,,} might work instead of \code{\quotedblbase}. \code{% ,,Hello''}.
-
-\begin{longtable}{l c l}
-\explain{\quotedblbase}{Double low-9 quotation mark}
-\explain{\quotesinglbase}{Single low-9 quotation mark}
-\explain{\guillemetleft}{Left-pointing double angle quotation mark}
-\explain{\guillemetright}{Right-pointing double angle quotation mark}
-\explain{\guilsinglleft}{Single left-pointing angle quotation mark}
-\explain{\guilsinglright}{Single right-pointing angle quotation mark}
-\end{longtable}
-
-\codeeg{\quotedblbase Cześć''}
-
-\codeeg{\textquotedblleft Hello\textquotedblright} or \codeshow{``Hi''}
-
-\packageSubsection{Centering and seting font sizes}{\usepackage{sectsty}}
-Quick Usage:\\
-\code{\chaptertitlefont{\centering\LARGE}}\\
-\code{\sectionfont{\Large}}
-\\\\
-Tl;dr - executes ... before printing whatever it says
-\\
-Long list: \noncurs
-\vspace{-11pt}
-\begin{multicols}{2} \noindent
-  \code{\allsectionsfont{...}} \\
-  \code{\partfont{... }}\\
-  \code{\chapterfont{...}}\\
-  \code{\sectionfont{...}}\\
-  \code{\subsectionfont{...}}\\
-  \code{\subsubsectionfont{...}}\\
-\columnbreak
-  \code{\paragraphfont{...}}\\
-  \code{\subparagraphfont{...}}\\
-  \code{\minisecfont{...}}\\
-  \code{\partnumberfont{...}}\\
-  \code{\parttitlefont{...}}\\
-  \code{\chapternumberfont{...}}\\
-  \code{\chaptertitlefont{...}}
-\end{multicols}
-
-\subsection{Dots}
-\package{tocloft}\\
-\code{\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}}
-
-If we are in \article, we use:\\
-\code{\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}}
-
-\disclamer{if this command is misspelled the error doesn't appear immediately,
-but when a chapter is added to the Table of Contents.}
-
-\subsection{Colors}
-\begin{latex}
-% requires \usepackage{hyperref}
-\hypersetup{colorlinks=true, linkcolor=cyan, citecolor=green,
-  filecolor=black, urlcolor=blue}
-\end{latex}
-
-Define colors:\\
-\code{\definecolor{name}{HTML}{RRGGBB}}, we can could also use \code{rgb} or \code{gray} instead of
-\code{HTML}.
-
-The option \texttt{[dvipsnames]} from \code{xcolor} defines PascalCase color names like in css like
-'\code{MidnightBlue}'.
-
-Using colors:
-\codeshow{\colorbox{blue}{fundal}}\\
-\codeshow{\fcolorbox{Black}{White}{text}} - \code{\fcolorbox{margine}{fundal}{text}}\\
-\code{\pagecolor{White}}
+\pagestyle{plain}
+\chapter{Math}\label{math}
+\input{math/math_mode.tex}
+\input{math/environments.tex}
+\input{math/symbols.tex}
+\input{math/other.tex}
+\input{math/named_equations.tex}
+\input{math/theorems.tex}
 
 
-\section{Romanian Names and diacritics}
-\subsection[Quick way]{Quick way \noncurs}
-
-\code{\usepackage[romanian]{babel}}
-
-\subsection{Long way}
-\begin{latex}
-\renewcommand{\contentsname}{Cuprins}
-\renewcommand{\chaptername}{Capitolul}
-\renewcommand{\bibname}{B\lowercase{ibliografie}}
-\renewcommand{\appendixname}{Anexa}
-\renewcommand{\indexname}{I\lowercase{ndice}}
-\renewcommand{\abstractname}{Rezumatul lucr\u{a}rii}
-\end{latex}
-
-\disclamer{don't combine The Long way with The Quick way.}
-
-\subsectionNoncurs{Proper diacritics}
-\package{combelow}\\
-\codeshow{\cb{s} \cb{t}, not \c{s} \c{t}}\\
-Easier diacritics:
-\begin{latex}
-\code{\usepackage[romanian]{babel}}
-\useshorthands{'}
-\defineshorthand{'t}{\cb{t}}
-\end{latex}
-
-\section[New Commands]{New Commands \noncurs}
-\begin{latex}
-\newcommand{\mat}[1]{\mathcal{M}_{#1}(\mathbb{R})}
-\renewcommand{\contentsname}{Cuprins}
-
-\usepackage{xparse}
-% O, o optional, m= mandatory
-\DeclareDocumentEnvironment{problema}{O {1} o m}{
-  \begin{enumerate}[leftmargin=*]
-    \addtocounter{enumi}{#1}
-    \item
-}{
-  \end{enumerate}
-  \IfValueT{#2}{\cppcode{#2}}
-}
-\newenvironment{\name}{begin}{end}
-
-\end{latex}
-
-\section{Fancy Headers}
-  \subsection{Main Commands}
-
-\begin{latex}
-% inside the document
-\pagestyle{fancy}
-\thispagestyle{fancy} % only for one page
-\lhead{\nouppercase{\leftmark}}
-\chead{\chaptername}
-\rhead{\rightmark}
-\lfoot{\thechapter}
-\cfoot{\thepage}
-\rfoot{\thesection}
-
-\fancyhf{} % reset the fancy settings
-\end{latex}
-
-%\thispagestyle{fancy}
-\pagestyle{fancy}
-\lhead{lm - \nouppercase{\leftmark}}
-\chead{cn - \chaptername}
-\rhead{rm - \nouppercase{\rightmark}}
-\lfoot{ch - \thechapter}
-\cfoot{pg - \thepage}
-\rfoot{ts - \thesection}
-
-\subsection{Page Styles}
-
-\begin{longtable}{l l}
-\justexplain{empty}{Empty headers and footers}
-\justexplain{plain}{The default, just the page number}
-\justexplain{myheadings}{The page number in header - right on even pages and left on odd pages}
-\end{longtable}
-
-\subsection{Information commands}
-\begin{longtable}{l l}
-  \justexplain{\thepage}{the current page number}
-  \justexplain{\thechapter}{the number of the current chapter}
-  \justexplain{\thesection}{the number of the current section}
-  \justexplain{\chaptername}{the word chapter or equivalent in the current language}
-  \justexplain{\leftmark}{the name\& number of the current level I structure \\& (Chapter for reports and books classes; Section for articles) in uppercase letters.}
-  \justexplain{\rightmark}{the name and number of the current next to top-level structure\\& (Section for reports and books; Subsection for articles) in uppercase letters. }
-\end{longtable}
-
-OIDA
-
-\section{Text alignment}
-
-%\begin{center} \code{\begin{center} ... \end{center}}  \end{center}
-%\begin{flushleft} \code{\begin{flushleft} ... \end{flushleft}} \end{flushleft}
-%\begin{flushright} \code{\begin{flushright} ... \end{flushright}} \end{flushright}
-
-\code{\begin{center} Centered \end{center}} \\
-\code{\begin{flushleft} Left \end{flushleft}} \\
-\code{\begin{flushright} Right \end{flushright}}
+\chapter{Tables and lists}
+\input{tables}
+\input{lists}
 
 \chapter{The rest}
-\pagestyle{plain}
-\section{Page Size and layout}
-\subsection[Quick way]{Quick way \noncurs}
-\package{geometry}\\
-\code{\geometry{a4paper,left=30mm,right=20mm,top=20mm,bottom=30mm}}
+\input{rest/page}
+\input{rest/symbols}
+\input{rest/spacing}
+\input{rest/misc}
+\input{rest/doc_structure}
+\input{rest/font_styles}
+\include{end}
 
-\subsection{Other way}
-OIDA
-
-
-
-\section{Symbols}
-\subsection{The bane of students}
-\begin{longtable}{l c l}
-\code{$\backslash$ \textbackslash} & \textbackslash & backslash \\
-\explain{\LaTeX}{\textit{that} symbol}
-\end{longtable}
-
-\subsection{Diacritics}
-\begin{longtable}{l c l}
-\explain{\^{a}}{circumflex}
-\explain{\i \j}{dotless i and j}
-\explain{\`{o}}{grave accent}
-\explain{\'{o}}{acute accent}
-\explain{\^{o}}{circumflex}
-\explain{\"{o}}{umlaut, trema or dieresis}
-\explain{\H{o}}{long Hungarian umlaut (double acute)}
-\explain{\~{o}}{tilde}
-\explain{\c{c}}{cedilla}
-\explain{\k{a}}{ogonek}
-\explain{\l{}}{barred l (l with stroke)}
-\explain{\={o}}{macron accent (a bar over the letter)}
-\explain{\b{o}}{bar under the letter}
-\explain{\.{o}}{dot over the letter}
-\explain{\d{u}}{dot under the letter}
-\explain{\r{a}}{ring over the letter}
-\explain{\u{o}}{breve over the letter}
-\explain{\v{s}}{caron/háček}
-\explain{\t{oo}}{"tie" (inverted u) over the two letters}
-\explain{\o}{slashed o (o with stroke)}
-\explain{\ss}{scharfes S}
-\end{longtable}
-
-\section{Spacing}
-\subsection[Vertical]{Vertical (that way $\downarrow$)}
-\indent
-
-\code{\par} - Next paragraph (like  \code{\\} but with indent)
-
-\code{\newpage \pagebreak \clearpage} - duh
-
-\code{\smallskip \medskip \bigskip } - duh
-
-\code{\cleardoublepage} - in book mode goto next odd page
-
-\code{\\[10cm] \vspace{10pt}} - vertical space of height (might require newline after)
-
-\subsection[Horizontal]{Horizontal (that way $\rightarrow$)}
-\indent
-
-\code{\-} - hyphenation point\\
-\codeeg{Panzer\-kampf\-wagen VI Tiger Aus\-füh\-rung B ,,Königs\-tiger''}\\
-aternative: \code{\hyphenation{Panzer-kampf-wagen}}
-\smallskip
-
-\code{\hspace{10pt}} - exact unit - might be negative
-\code{M\hspace{-9pt}M} - M\hspace{-9pt}M
-
-\code{\!} - negative space
-
-\code{\thinspace \medspace \thickspace} $\iff$ \code{\, \: \;} - duh
-
-\code{~ \ \quad \qquad} - bigger\\
-\codeeg{a\, b\: c\; d~e\ f\quad g\qquad h}\\
-Note: \code{~} is non breaking space.
-
-\subsectionNoncurs{Line spacing}
-\begin{latex}
-\linespread{1.3} % ~1.5 
-\linespread{1.6} % ~2 
-\setstretch{2} % 2
-\end{latex}
-sau:
-\begin{latex}
-\singlespacing
-\doublespacing
-
-\begin{singlespace}  ...\end{singlespace}
-\begin{doublespace}  ...\end{doublespace}
-\begin{onehalfspace}  ...\end{onehalfspace}
-\begin{spacing}{factor}  ...\end{spacing}{factor}
-
-\end{latex}
-
-\section[Miscellaneous]{\st{Pointless} Miscellaneous}
-\subsection{Striketrough}
-\package{soul}
-\codeshow{\st{text}}
-\subsection{Units}
-\begin{itemize}\setlength\itemsep{-0.5em}
-\item pt - a point is 1/72.27 inch, that means about 0.351 mm in non freedom units
-\item mm - millimeter
-\item cm - centimeter
-\item in - inch
-\item ex - roughly the height of an "x" in the current font
-\item em - roughly the width of an  "M" (uppercase) in the current font
-\end{itemize}
-
-\subsection{Page Numbers}
-\begin{longtable}{l l}
-  \justexplain{\thispagestyle{empty}}{no page number}
-  \justexplain{\pagenumbering{roman}}{roman i ii}
-  \justexplain{\pagenumbering{Roman}}{Roman I II}
-  \justexplain{\pagenumbering{arabic}}{arabic}
-  \justexplain{\pagenumbering{alph}}{alph - a b }
-  \justexplain{\pagenumbering{Alph}}{alph - A B }
-\end{longtable}
-
-\code{\pagenumbering} resets the counter,
-use \code{\setcounter{page}{7}} afterwards to set the counter
-
-\subsection{Self explanatory}
-\begin{latex}
-\include{smth.txt}
-\tableofcontents
-
-\newpage
-\clearpage
-\end{latex}
-
-\section{Document Structure}
-\subsection{Main structure}
-\begin{latex}
-\part{Part}
-\chapter{C} % not found in article
-\section{S}
-\subsection{SS}
-\subsubsection{SSS}
-\paragraph{P}
-\subparagraph{SP}
-\end{latex}
-
-Adding \code{[Short title]} will add that short name in the Table contents.
-
-Adding a \texttt{*} will not add the structure to Table of contents and will not
-number it.
-
-To add it to the Table of contets use:
-\code{\addcontentsline{toc}{section}{My name}}
-
-Not adding this before a link or reference might not center the page properly\\
-\code{\phantomsection}\\
-e.g. \code{\phantomsection\label{Label}}
-
-
-\subsection[Title page]{Title page\footnote{see the actual title page}}
-\begin{latex}
-\title{\LaTeX CheatSheet}
-\author{Łucasz Zieliński\thanks{Dzięki światu}}
-\date{\today}
-
-\begin{titlepage} 
-  \maketitle 
-\end{titlepage}
-\end{latex}
-
-
-\subsection{Bibliography, abstract, index and appendix}
-\begin{latex}
-\appendix
-\chapter{something}
-
-\begin{abstract}
-Bla bla
-\end{abstract}
-\end{latex}
-\subsection{Bibliography}
-\begin{latex}
-\begin{thebibliography}{99}
-    \bibitem{author/19} The Author, A book, 2018
-\end{thebibliography}
-\end{latex}
-Cite from bibliography\cite{datta/17}.
-
-\subsubsection{Index}
-\begin{latex}
-%in preamble
-\makeindex
-%in doc
-\phantomsection
-\addcontentsline{toc}{chapter}{Index} %index is not added by default to tableofcontents
-\printindex
-\end{latex}
-
-Add word to index: \code{\index{Entry}}\index{Entry}
-
-\section{Font styles}
-\subsection{Text mode}
-\begin{longtable}{l | l | l}
-  \explain{\textnormal{Normal}}{The default font}
-  \explain{\textrm{Roman}}{Roman font}
-  \explain{\textsf{Sans}}{Sans serif}
-  \explain{\texttt{Typewriter}}{Teletype - monospace font}
-\hline
-  \explain{\emph{Emph \emph{nested}}} {Emphasis. Might be nested}
-  \explain{\textbf{Bold}} {Boldface}
-  \explain{\textmd{Medium}}{Medium - default}
-\hline
-  \explain{\textup{Upright}}{Upright shape - default}
-  \explain{\textit{abcx - Italics}}{Italic shape}
-  \explain{\textsl{abcx - Slanted}}{Slanted shape}
-\hline
-  \explain{\textsc{Small Caps}}{Small Capitals}
-  \explain{\uppercase{Uppercase $F=x$}}{Uppercase}
-  \explain{\lowercase{Lowercase $F=x$}}{Lowercase}
-\hline
-  \explain{\tiny{tiny}}{ tiny}
-  \explain{\scriptsize{script}}{scriptsize}
-  \explain{\footnotesize{footnote}}{footnote}
-  \explain{\small{small}}{small}
-  \explain{\normalsize{normalsize}}{normal - default}
-  \explain{\large{large}}{large}
-  \explain{\Large{Large}}{Large}
-  \explain{\LARGE{LARGE}}{LARGE}
-  \explain{\huge{huge}}{huge}
-  \explain{\Huge{Huge}}{Huge}
-\end{longtable}
-
-\subsection{Math mode}
-
-\begin{longtable}{l | l | l}
-  
-  \explainMFont{\text}{Enter text mode}
-  \explainMFont{\mathnormal}{Default}
-  \explainMFont{\mathrm}{Roman - one word functions}
-  \explainMFont{\mathit}{Italics - words spaced more naturally}
-  \explainMFont{\mathbf}{Boldface}
-  \explainMFont{\mathsf}{Sans serif}
-  \explainMFont{\mathtt}{Teletype - monospaced}
-  \explainMFont{\mathfrak}{Fraktur}
-  \explainMFontUpper{\mathcal}{Caligraphy - of note $\mathcal{M}$atrix}
-  \explainMFontUpper{\mathbb}{Blackboard bold - of note $\mathbb{R}$}
-  \explainMFontUpper{\mathscr}{Script - Super  $\mathscr{F}$\!{}ancy}
-\end{longtable}
-
-%\item{
-
-\clearpage
-\phantomsection
-\addcontentsline{toc}{chapter}{Index}
-
-\printindex
-
-\begin{thebibliography}{99}
-    \bibitem{datta/17} Dilip Datta,\textit{\LaTeX{} in $24$ Hours. A Practical Guide for Scientific Writting}, Springer, Cham,2017
-
-\end{thebibliography}
 \end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% https://www.math.uaic.ro/~maticiuc/didactic/LaTeX_Course.pdf @line 85
+Left at Tables
+Left lab 9-10
 
-Left at chapter 4, lab 5&6
+Add itemize....
+
+PRINT this
+
+ALSO PRINT Barem & checklist
+
+Page 18 (actual 20) - dotfill

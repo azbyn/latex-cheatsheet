@@ -1,0 +1,38 @@
+\section{Page Size, layout and units}
+\subsection{Page Size}
+\subsubsection{The \code{geometry} package}
+\package{geometry}\\
+\code{\geometry{a4paper,left=30mm,right=20mm,top=20mm,bottom=30mm}}
+
+Or:\\
+\code{\usepackage[a4paper,left=30mm,right=20mm,top=20mm,bottom=30mm]{geometry}}
+\subsubsection{Options}
+\begin{longtable}{l l}
+  \justexplain{a4paper}{specifies usage of a4 paper - the one true paper size\footnotemark[1]}
+  \justexplain{screen}{a special paper size for use in presentations\footnotemark[2]}
+  \justexplain{paperweight}{width of the paper. \code{paperwidth=30cm}}
+  \justexplain{landscape}{landscape mode}
+  \justexplain{portrait}{portrait mode}
+  \justexplain{centering}{auto centering}
+  \justexplain{twoside}{\code{left} and \code{right} are swapped on even and odd pages}
+\end{longtable}
+
+\footnotetext[1]{the one true paper size (apart from others in the A series) is
+  $\mathfrak{wunderbar}$ as it was made by german engineers with mathematics in mind.
+  This german sheet of engineering has a width of precisely $\sqrt[4]{2}/4\mathrm{m}$
+  and a height of precisely $ 1 /(4\sqrt[4]{2}) \mathrm{m}$,
+  or about $ 210 \times 297\mathrm{mm} $
+  and has an area of exactly $1\!/\!16 \mathrm{m}$. }
+\footnotetext[2]{For actual presentations use \code{screen,centering} and the \code{slide} class.}
+
+For more, see \autoref{pageLayoutFig}.
+
+\subsection{Units}
+\begin{itemize}\setlength\itemsep{-0.5em}
+\item pt - a point is 1/72.27 inch, that means about 0.351 mm in non freedom units
+\item mm - millimeter
+\item cm - centimeter
+\item in - inch
+\item ex - roughly the height of an "x" in the current font
+\item em - roughly the width of an  "M" (uppercase) in the current font
+\end{itemize}

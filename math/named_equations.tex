@@ -1,0 +1,20 @@
+\section{Equations Naming and number placement}
+
+\begin{example}
+\begin{equation}
+f(x) = y \tag{Fancy Thing}\label{fThing}
+\end{equation}
+We defined this \eqref{fThing}
+\end{example}
+
+No parens:\\
+\begin{example}
+\begin{equation}
+f(x) = y \tag*{Fancy Thing}\label{fThing2}
+\end{equation}
+We defined this \eqref{fThing2}
+\end{example}
+
+Adding \code{leqno} in documentclass options like below will put the numbers on
+the left.\\
+\code{\documentclass[a4paper,leqno]{article}}

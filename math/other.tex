@@ -1,0 +1,100 @@
+\subsection*{Limits}
+\begin{longtable}{l l}
+\mtshow{\lim_{x \to \infty}}
+\mtshow{\lim\limits_{x \to \infty}}
+\mtshow{\lim\nolimits_{x \to \infty}}
+\end{longtable}
+
+\begin{longtable}{l l}
+\mtshow{\sum_{k = 0}^\infty}
+\mtshow{\sum\limits_{k = 0}^\infty}
+\mtshow{\sum\nolimits_{k = 0}^\infty}
+\end{longtable}
+
+Multiple things in limit:\\
+\begin{example}
+\[\sum\limits_{\substack{
+   0<i<m \\
+   0<j<n
+  }} ^{\substack{1\\2}}
+P(i,j)
+\]
+\end{example}
+
+
+
+\subsection*{Things over and below arrows and equals}
+Requires the package \package{extarrows}.\\
+\begin{example}
+\[
+ A \overset{!}{=} B; A \stackrel{!}{=} B
+\]
+\[
+  x \overset{text}{\Longrightarrow} y
+\]
+\end{example}
+
+Or, for longer text:\\
+\begin{example}
+\[A \xlongequal{\text{long text}} B \]
+\[A \xleftarrow{\text{this way}} B 
+  \xrightarrow[\text{bottom }]{\text{top}} C
+\]
+\end{example}
+
+Horizontal braces:\\
+\begin{example}
+\[
+ z = \overbrace{
+   \underbrace{x}_\text{real} + i
+   \underbrace{y}_\text{imaginary}
+  }^\text{complex number}
+\]
+\end{example}
+
+Nicer spacing on equals:\\
+\codeshow{$y \xlongequal{\hspace{-4pt}\mathrm{def}\hspace{-4pt}}f(x)$}
+
+
+To make integrals look like this $\int\limits_a^b $:
+
+\code{\int\limits_a^b}\\
+or, if it's used frequently, add this in preamble to make all look like this:\\
+\code{\usepackage[intlimits]{amsmath}}
+
+\subsection*{Boxed equations}
+
+\begin{example}
+\begin{equation}
+ \boxed{x^2+y^2 = z^2}
+\end{equation}
+\end{example}
+
+\begin{example}
+\fbox{
+ \addtolength{\linewidth}{-2\fboxsep}%
+ \addtolength{\linewidth}{-2\fboxrule}%
+ \begin{minipage}{\linewidth}
+  \begin{equation}
+   x^2+y^2=z^2
+  \end{equation}
+ \end{minipage}
+}
+
+\end{example}
+
+\subsection*{Nice vertical space}
+\begin{example}
+\centering
+%not really well shown here but \, can be useful
+$\int f(x)\,dx$ vs $\frac{a}{b} \cdot x$\\
+$(x - y) \in \R, \quad \forall x, y \in \R$
+\end{example}
+
+\begin{enumerate}
+\item Text over and under arrows:\\
+\item Theorems:
+  \package{amsthm}
+\end{enumerate}
+
+

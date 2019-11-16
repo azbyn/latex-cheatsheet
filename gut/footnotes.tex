@@ -1,0 +1,38 @@
+\section{Footnotes}
+\subsection{Usage}
+\codeshow{Text\footnote{hi there} more text.}
+
+To use whatever number:\\
+\codeshow{\footnote[9]{fn 2}}
+
+To define footnote style:\\
+\codeshow{\renewcommand{\thefootnote}{\roman{footnote}}}\footnote{like so} or\\
+
+\codeshow{\renewcommand{\thefootnote}{\fnsymbol{footnote}}\footnote{fn 4}}\\
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+Reset footnotes:\\
+\codeshow{\setcounter{footnote}{0}}
+
+For continuous footnotes:\\
+\package{chngcntr}
+
+
+\subsection{Number footnotes continuously in all chapters}
+In \book and \report footnotes are reset every chapter, to number them continuously do this:\\
+\code{\counterwithout{footnote}{chapter}}\footnote{Requires the package \code{chngcntr}}
+
+\subsection{Forcing footnotes when it doesn't work}
+In math mode\footnote{but not in the \code{equation} environment} and tables
+\code{\footnote} doesn't work. Instead use \codeshow{\footnotemark[18]}
+\codeshow{\footnotetext[18]{Hi there}}
+\begin{tabular}{l l}
+  \codeeg{foo\footnote{not shown}} & this is inside a table\\
+  \codeeg{bar\footnotemark} & this is inside a table\\
+  \codeeg{baz\footnotemark} & this is inside a table\\
+\end{tabular}
+\codeeg{\footnotetext{Now shown}}\\
+\note{Using multiple \code{\footnotemark}s might not number them properly}\\
+\codeeg{\footnotetext{Now shown 2}}
+
+  

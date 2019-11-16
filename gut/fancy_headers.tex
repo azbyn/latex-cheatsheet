@@ -1,0 +1,43 @@
+\section{Fancy Headers}
+\subsection{Main Commands}
+
+\begin{latex}
+% inside the document
+\pagestyle{fancy}
+\thispagestyle{fancy} % only for one page
+\lhead{\nouppercase{\leftmark}}
+\chead{\chaptername}
+\rhead{\rightmark}
+\lfoot{\thechapter}
+\cfoot{\thepage}
+\rfoot{\thesection}
+
+\fancyhf{} % reset the fancy settings
+\end{latex}
+
+%\thispagestyle{fancy}
+\pagestyle{fancy}
+\lhead{lm - \nouppercase{\leftmark}}
+\chead{cn - \chaptername}
+\rhead{rm - \nouppercase{\rightmark}}
+\lfoot{ch - \thechapter}
+\cfoot{pg - \thepage}
+\rfoot{ts - \thesection}
+
+\subsection{Page Styles}
+
+\begin{longtable}{l l}
+\justexplain{empty}{Empty headers and footers}
+\justexplain{plain}{The default, just the page number}
+\justexplain{myheadings}{The page number in header - right on even pages and left on odd pages}
+\end{longtable}
+
+\subsection{Information commands}
+\begin{longtable}{l l}
+  \justexplain{\thepage}{the current page number}
+  \justexplain{\thechapter}{the number of the current chapter}
+  \justexplain{\thesection}{the number of the current section}
+  \justexplain{\chaptername}{the word chapter or equivalent in the current language}
+  \justexplain{\leftmark}{the name\& number of the current level I structure \\& (Chapter for reports and books classes; Section for articles) in uppercase letters.}
+  \justexplain{\rightmark}{the name and number of the current next to top-level structure\\& (Section for reports and books; Subsection for articles) in uppercase letters. }
+\end{longtable}

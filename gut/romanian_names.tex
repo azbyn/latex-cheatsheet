@@ -1,0 +1,31 @@
+\section{Romanian Names and diacritics}
+\subsection[Quick way]{Quick way \noncurs}
+
+\code{\usepackage[romanian]{babel}}
+
+\subsection{Long way}
+\begin{latex}
+\renewcommand{\contentsname}{Cuprins}
+\renewcommand{\chaptername}{Capitolul}
+
+\renewcommand{\bibname}{B\lowercase{ibliografie}}
+\renewcommand{\refname}{B\lowercase{ibliografie}} %in article
+
+\renewcommand{\appendixname}{Anexa}
+\renewcommand{\indexname}{I\lowercase{ndice}}
+\renewcommand{\abstractname}{Rezumatul lucr\u{a}rii}
+\renewcommand{\listtablename}{Lista de tabele}
+\renewcommand{\listfigurename}{Lista de figuri}
+\end{latex}
+
+\note{don't combine The Long way with The Quick way.}
+
+\subsectionNoncurs{Proper diacritics}
+\package{combelow}\\
+\codeshow{\cb{s} \cb{t}, not \c{s} \c{t}}\\
+Easier diacritics:
+\begin{latex}
+\code{\usepackage[romanian]{babel}}
+\useshorthands{'}
+\defineshorthand{'t}{\cb{t}}
+\end{latex}

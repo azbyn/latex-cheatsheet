@@ -1,0 +1,124 @@
+\section{Packages}
+\subsection{Math}
+\begin{latex}
+\usepackage{amsmath} % adds a lot of math stuff 
+\usepackage{mathtools} % fixes some amsmath things and adds more
+\usepackage{amssymb} % adds a lot of math symbols 
+\usepackage{amsfonts} % stuff like \mathbb
+\usepackage{mathrsfs} % for \mathscr
+\end{latex}
+
+\subsection{Fancy page style}
+\begin{latex}
+\usepackage{fancyhdr}
+\end{latex}
+
+\subsection{Colors}
+\begin{latex}
+\usepackage{color}
+%or even better (adds names like \RoyalPurple)
+\usepackage[dvipsnames]{xcolor}
+\end{latex}
+\subsubsection* {Defining colors}
+\code{\definecolor{name}{HTML}{RRGGBB}}, we can could also use \code{rgb} or \code{gray} instead of
+\code{HTML}.
+
+The option \texttt{[dvipsnames]} from \code{xcolor} defines PascalCase color names like in css like
+'\code{MidnightBlue}'.
+
+\subsubsection{Using colors}
+\codeshow{\colorbox{blue}{fundal}}\\
+\codeshow{\fcolorbox{Black}{White}{text}} - \code{\fcolorbox{margine}{fundal}{text}}\\
+\code{\pagecolor{White}}\\
+or \codeshow{\color{red} hello \color{black}}\\
+or \codeshow{{\color{red} hello}}
+
+\subsection{Images}
+\begin{latex}
+%preable
+\usepackage{graphicx}
+\usepackage{epstopdf}% for eps images
+
+%in document
+\includegraphics[scale=.4, angle=45]{something}
+\includegraphics[width=3cm, height=4cm]{something}
+\includegraphics[width=0.5\textwidth]{something}
+\end{latex}
+Tell where the images are, relative to main \texttt{.tex} file:\\
+\code{\graphicspath}\texttt{\{ \{./images/\} \{./images2/\} \}}
+
+\subsection{Unicode - fancy quotes}
+\begin{latex}
+\usepackage[T1]{fontenc}
+% allows inserting unicode directly in latex (i.e. from keyboard)
+\usepackage[utf8]{inputenc} % \noncurs
+\end{latex}
+
+\begin{longtable}{l c l}
+\explain{\quotesinglbase}{Single low-9 quotation mark}
+\explain{\quotedblbase}{Double low-9 quotation mark}
+\explain{\guillemetleft}{Left-pointing double angle quotation mark}
+\explain{\guillemetright}{Right-pointing double angle quotation mark}
+\explain{\guilsinglleft}{Single left-pointing angle quotation mark}
+\explain{\guilsinglright}{Single right-pointing angle quotation mark}
+\explain{'}{Single high quotation mark}
+\explain{`}{Single high-6 quotation mark}
+\explain{``}{Double high-6 quotation mark}
+\explain{''}{Double high-9 quotation mark}
+\explain{"}{Double high-straight quotation mark}
+\end{longtable}
+
+\begin{example}
+\begin{center}
+\quotedblbase Cze\'s\'c'' czy ,,dzien dobry''. \\
+\textquotedblleft Hello\textquotedblright{} 
+or ``Hi''.\\
+\guillemetleft Bonjour\guillemetright{}.
+\end{center}
+\end{example}
+
+\subsection{Centering and setting font sizes}
+Quick Usage:\\
+\begin{latex}
+\usepackage{sectsty}
+\chaptertitlefont{\centering\LARGE}
+\sectionfont{\Large}
+\end{latex}
+\\
+Long list (tl;dr - executes ... before printing whatever it says): \noncurs
+\vspace{-11pt}
+\begin{multicols}{2} \noindent
+  \code{\allsectionsfont{...}} \\
+  \code{\partfont{... }}\\
+  \code{\chapterfont{...}}\\
+  \code{\sectionfont{...}}\\
+  \code{\subsectionfont{...}}\\
+  \code{\subsubsectionfont{...}}\\
+\columnbreak
+  \code{\paragraphfont{...}}\\
+  \code{\subparagraphfont{...}}\\
+  \code{\minisecfont{...}}\\
+  \code{\partnumberfont{...}}\\
+  \code{\parttitlefont{...}}\\
+  \code{\chapternumberfont{...}}\\
+  \code{\chaptertitlefont{...}}
+\end{multicols}
+
+\subsection{Links and references}
+\begin{latex}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=cyan, citecolor=green,
+  filecolor=black, urlcolor=blue}
+\end{latex}
+More in \nameref{labels}
+
+\subsection{Dots after chapters in table of contents}
+\package{tocloft}\\
+\code{\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}}
+
+If we are in \article, we use:\\
+\code{\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}}
+
+\note{if this command is misspelled the error doesn't appear immediately,
+but when a chapter is added to the Table of Contents.}
+
