@@ -18,7 +18,6 @@
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 
-\usepackage{fancyhdr}
 \usepackage{makeidx}
  
 %\usepackage{color}
@@ -138,7 +137,6 @@
 \newcommand{\package}[1]{\code{\usepackage{#1}}\label{#1}}
 \newcommand{\noncurs}{\hspace{.5cm}$\notin \mathscr{C}$}
 
-
 \newcommand{\mtshow}[1]{\code{#1} & $#1$ \\}
 \newcommand{\dmtshow}[1]{\code{#1} & $\displaystyle #1$ \\}
 
@@ -189,16 +187,22 @@
 
 \renewcommand{\bibname}{Bibliografie}
 
-%\title{\LaTeX{} Cheatsheet}
-\title{\LaTeX{} CheatSheet\footnote{Saving 6 times more trees \& stuff}}
+\title{\LaTeX{} Cheatsheet}
 \author{Łucasz Zieliński\thanks{Dzięki światu}}
 \date{\today}
+\usepackage{fancyhdr}
 
 \newcommand*{\R}{\mathbb{R}}
+\pagestyle{fancy}
+\lhead{\nouppercase{\leftmark}}
+\rhead{\nouppercase{\rightmark}}
+
 %%%%%%%%%%%%%%
 \begin{document}
-%\maketitle
+% \maketitle
+\pagestyle{plain}
 \include{title}
+\pagestyle{fancy}
 
 \chapter{Das gute Zeug}
 \input{gut/doc_classes}
@@ -212,8 +216,8 @@
 \input{gut/symbols}
 \input{gut/spacing}
 \input{gut/misc}
+\input{gut/font_styles}
 
-\pagestyle{plain}
 \chapter{Math}\label{math}
 \input{math/math_mode.tex}
 \input{math/environments.tex}
@@ -230,7 +234,6 @@
 \chapter{The rest}
 \input{rest/page}
 \input{rest/doc_structure}
-\input{rest/font_styles}
 \include{end}
 
 \end{document}

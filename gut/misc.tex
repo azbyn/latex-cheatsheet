@@ -4,6 +4,7 @@
 \codeshow{\st{text}}
 
 \subsection{Page Numbers}\label{numbers}
+\vspace{-.5cm}
 \begin{longtable}{l l}
   \justexplain{\thispagestyle{empty}}{no page number}
   \justexplain{\pagenumbering{roman}}{roman i ii}
@@ -27,12 +28,4 @@ It can be useful to do something like this:
 \begin{latex}
 \include{smth.txt}
 \input{smth.txt} % same as include, but without a \clearpage in front
-\tableofcontents
-\listoffigures
-\listoftables
-
-\newpage
-\clearpage
 \end{latex}
-
-

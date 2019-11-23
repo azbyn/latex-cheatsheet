@@ -2,16 +2,16 @@
 \code{\documentclass[...]{report, article, book, beamer}}\\
 e.g. \code{\documentclass[11pt,a4paper]{report}}
 
-\subsection{Differences with regard to available commands and environments}
-\begin{itemize}
+\subsection*{Differences with regard to available commands and environments}
+\begin{itemize}\setlength{\itemsep}{0mm}
 \item \book and \report feature the \code{\chapter} sectioning command, while \article doesn't.
 \item In \book and \report, \code{\appendix} will cause \code{\chapter}s to be typeset as ``Appendix X'' instead of ``Chapter X''. For article, this isn't applicable.
 \item \book and \report will start a new page for \code{\part}s , while \article won't.
 \item \book offers the \code{\frontmatter}, \code{\mainmatter}, and \code{\backmatter} commands to control page numbering (Roman for the front matter, arabic elsewhere) and numbering of sectioning titles (no numbering in the front and back matter), while \report and \article don't.
 \item \book \textit{doesn't} offer the \code{abstract} environment, while \report and \article \textit{do}.
 \end{itemize}
-\subsection{Differences with regard to default settings}
-\begin{itemize}
+\subsection*{Differences with regard to default settings}
+\begin{itemize}\setlength{\itemsep}{0mm}
   \item The \book class uses the \code{twoside} class option (which means different margins and headers/footers for even and odd pages), while \report and \article use \code{oneside}.
   \item The \book class uses the \code{twoside} class option (which means different margins and headers/footers for even and odd pages), while \report and \article use \code{oneside}.
   \item \book uses \code{openright} (new parts and chapters start on ``right'' pages, adding a blank page before if necessary), while \report uses \code{openany}. (Note that ``right'' means an odd page in twoside mode, but any page in oneside mode.) For \article, the distinction between \code{openright} and \code{openany} isn't applicable.

@@ -8,11 +8,6 @@
 \usepackage{mathrsfs} % for \mathscr
 \end{latex}
 
-\subsection{Fancy page style}
-\begin{latex}
-\usepackage{fancyhdr}
-\end{latex}
-
 \subsection{Colors}
 \begin{latex}
 \usepackage{color}
@@ -55,7 +50,8 @@ Tell where the images are, relative to main \texttt{.tex} file:\\
 \centering
 \end{figure}
 \end{latex}
-\note{You can use \code{wrapfigure} for wraping text around a figure. See \nameref{wraptable}}.
+\note{You can use \code{wrapfigure} for wraping text around a figure.
+  See \nameref{wraptable}} (page \pageref{wraptable}).
 Options:
 \begin{longtable}{l l}
   \justexplain{h}{place here - kinda}
@@ -94,7 +90,7 @@ To number them separately but within the same main number use \code{subfigure}
     \c{s}i \textit{Relativitate} de M.C. Escher (1953)}\label{Stema_Escher4}}
 \end{figure}
 \end{latex}
-\subsection{Unicode - fancy quotes}
+\subsection{Fancy quotes \& Unicode}
 \begin{latex}
 \usepackage[T1]{fontenc}
 % allows inserting unicode directly in latex (i.e. from keyboard)
@@ -157,7 +153,7 @@ Long list (tl;dr - executes ... before printing whatever it says): \noncurs
 \hypersetup{colorlinks=true, linkcolor=cyan, citecolor=green,
   filecolor=black, urlcolor=blue}
 \end{latex}
-More in \nameref{labels}
+More in \nameref{labels} (page \pageref{labels})
 
 \subsection{Dots after chapters in table of contents}
 \package{tocloft}\\

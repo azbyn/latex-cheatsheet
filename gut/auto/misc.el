@@ -1,7 +1,9 @@
 (TeX-add-style-hook
- "end"
+ "misc"
  (lambda ()
+   (TeX-run-style-hooks
+    "smth")
    (LaTeX-add-labels
-    "pageLayoutFig"))
+    "numbers"))
  :latex)
 

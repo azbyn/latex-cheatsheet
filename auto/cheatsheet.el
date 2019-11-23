@@ -5,20 +5,20 @@
                      '(("report" "11pt" "a4paper")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("xcolor" "dvipsnames") ("fontenc" "T1") ("inputenc" "utf8")))
-   (add-to-list 'LaTeX-verbatim-environments-local "minted")
-   (add-to-list 'LaTeX-verbatim-environments-local "latex")
    (add-to-list 'LaTeX-verbatim-environments-local "latex*")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "codel")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-environments-local "latex")
+   (add-to-list 'LaTeX-verbatim-environments-local "minted")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "code")
-   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "codel")
-   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "codel")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "code")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "codel")
    (TeX-run-style-hooks
     "latex2e"
     "tmp/eqnexample"
@@ -34,6 +34,7 @@
     "gut/symbols"
     "gut/spacing"
     "gut/misc"
+    "gut/font_styles"
     "math/math_mode"
     "math/environments"
     "math/symbols"
@@ -44,7 +45,6 @@
     "lists"
     "rest/page"
     "rest/doc_structure"
-    "rest/font_styles"
     "end"
     "report"
     "rep11"
@@ -61,7 +61,6 @@
     "amsfonts"
     "mathrsfs"
     "mathtools"
-    "fancyhdr"
     "makeidx"
     "xcolor"
     "graphicx"
@@ -77,7 +76,8 @@
     "inputenc"
     "showexpl"
     "longtable"
-    "amsthm")
+    "amsthm"
+    "fancyhdr")
    (TeX-add-symbols
     '("latexFile" [TeX-arg-key-val LaTeX-minted-key-val-options-local] TeX-arg-file)
     '("code" [TeX-arg-key-val LaTeX-minted-key-val-options-local] TeX-arg-verb-delim-or-brace)

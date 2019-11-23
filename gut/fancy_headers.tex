@@ -2,7 +2,6 @@
 \subsection{Main Commands}
 
 \begin{latex}
-% inside the document
 \pagestyle{fancy}
 \thispagestyle{fancy} % only for one page
 \lhead{\nouppercase{\leftmark}}
@@ -15,29 +14,118 @@
 \fancyhf{} % reset the fancy settings
 \end{latex}
 
-%\thispagestyle{fancy}
-\pagestyle{fancy}
-\lhead{lm - \nouppercase{\leftmark}}
-\chead{cn - \chaptername}
-\rhead{rm - \nouppercase{\rightmark}}
-\lfoot{ch - \thechapter}
-\cfoot{pg - \thepage}
-\rfoot{ts - \thesection}
-
 \subsection{Page Styles}
 
-\begin{longtable}{l l}
-\justexplain{empty}{Empty headers and footers}
-\justexplain{plain}{The default, just the page number}
-\justexplain{myheadings}{The page number in header - right on even pages and left on odd pages}
+\begin{longtable}{l m{13cm}}
+\justexplain{empty}{Both header and footer are cleared}
+\justexplain{plain}{Header is clear, but the footer contains the page number in the center}
+\justexplain{headings}{Footer is blank, header displays information according to document class (e.g., section name) and page number top right.}
+\justexplain{myheadings}{Page number is top right, and it is possible to control the rest of the header.}
 \end{longtable}
 
+The commands \code{\markright} and \code{\markboth} can be used to set the content
+of the headings by hand.The following commands placed at the beginning of an article
+document will set the header of all pages (one-sided) to contain ``John Smith'' top
+left, ``On page styles'' centered and the page number top right:
+\begin{latex}
+\pagestyle{headings}
+\markright{John Smith\hfill On page styles\hfill}
+\end{latex}
+
 \subsection{Information commands}
-\begin{longtable}{l l}
-  \justexplain{\thepage}{the current page number}
-  \justexplain{\thechapter}{the number of the current chapter}
-  \justexplain{\thesection}{the number of the current section}
-  \justexplain{\chaptername}{the word chapter or equivalent in the current language}
-  \justexplain{\leftmark}{the name\& number of the current level I structure \\& (Chapter for reports and books classes; Section for articles) in uppercase letters.}
-  \justexplain{\rightmark}{the name and number of the current next to top-level structure\\& (Section for reports and books; Subsection for articles) in uppercase letters. }
+There are special commands containing details on the running page of the document.
+\begin{longtable}{l m{13cm}}
+\justexplain{\thepage}{number of the current page}
+\justexplain{\leftmark}{current chapter (or section for articles) name printed like ``CHAPTER 3. THIS IS THE CHAPTER TITLE''}
+\justexplain{\rightmark}{current section (or subsection for articles) name printed like ``1.6. THIS IS THE SECTION TITLE''}
+\justexplain{\chaptername}{the name chapter in the current language. If this is English, it will display ``Chapter''}
+\justexplain{\thechapter}{current chapter number}
+\justexplain{\thesection}{current section number}
 \end{longtable}
+
+Example:
+\begin{examplefr}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+\pagestyle{fancy}
+\cfoot{Page - \thepage}
+\lhead{L Mark - \nouppercase{\leftmark}}
+\rhead{R Mark - \nouppercase{\rightmark}}
+\chead{C Name - \chaptername}
+\lfoot{The Chapter - \thechapter}
+\rfoot{The Section - \thesection}
+\end{examplefr}
+
+Note that \code{\leftmark} and \code{\rightmark} convert the names to uppercase, whichever was the formatting of the text. If you want them to print the actual name of the chapter without converting it to uppercase use the following command: 
+
+\begin{latex}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+\end{latex}
+
+Now \code{\leftmark} and \code{\rightmark} will just print the name of the chapter and section, without number and without affecting the formatting.
+Note that these redefinitions must be inserted \emph{after} the first call of \code{\pagestyle{fancy}}. The standard book formatting of the \code{\chaptermark} is:
+\begin{latex}
+\renewcommand{\chaptermark}[1]{\markboth{
+    \MakeUppercase{\chaptername\ \thechapter.\ #1}}{}}
+\end{latex}
+Moreover, with the following commands you can define the thickness of the decorative lines on both the header and the footer:
+\begin{latex}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\end{latex}
+
+\subsection{\texttt{fancyhdr}}
+Add this in your preamble:
+\begin{latex}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\end{latex}
+
+You can use these commands to customize headers and footers
+\begin{latex}
+\lhead[<even output>]{<odd output>}
+\chead[<even output>]{<odd output>}
+\rhead[<even output>]{<odd output>}
+
+\lfoot[<even output>]{<odd output>}
+\cfoot[<even output>]{<odd output>}
+\rfoot[<even output>]{<odd output>}
+\end{latex}
+
+Example:
+\begin{latex}
+\lhead[Author Name]{}
+\rhead[]{Author Name}
+\lhead[]{\today}
+\rhead[\today]{}
+\lfoot[\thepage]{}
+\rfoot[]{\thepage}
+\end{latex}
+
+\subsection[\texttt{titlesec}]{\texttt{titlesec} - not tested \noncurs}
+Useful for showing first thing on page - not last.
+\begin{latex}
+\usepackage[pagestyles]{titlesec}
+% Definition of the page style with required headers
+\newpagestyle{TitleMarks}{%
+  \sethead[Top is~\toptitlemarks\thesubsection]% even-left
+    [First is~\firsttitlemarks\thesubsection]% even-center
+    [Bottom is~\bottitlemarks\thesubsection]% even-right
+    {Top is~\toptitlemarks\thesubsection}% odd-left
+    {First is~\firsttitlemarks\thesubsection}% odd-center
+    {Bottom is~\bottitlemarks\thesubsection}% odd-right
+}
+\end{latex}
+
+\subsection{Page \emph{n} of \emph{m}}
+\begin{latex}
+\usepackage{lastpage}
+...
+\cfoot{\thepage\ of \pageref{LastPage} }
+\end{latex}
+\fancyhf{}
+\lhead{\nouppercase{\leftmark}}
+\rhead{\nouppercase{\rightmark}}
+\cfoot{\thepage}

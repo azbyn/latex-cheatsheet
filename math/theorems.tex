@@ -1,6 +1,6 @@
 \section{Theorem environments}
 \note{\code{\emph} might be useful inside theorems}
-\subsection{Without \code{asmthm}}
+\subsection*{Without \code{asmthm}}
 \begin{latex}
 \newtheorem{theo}{Teorema}
 %the [theo] signifies that all these environments share the same counter
@@ -11,7 +11,7 @@
 \newtheorem{lema}[theo]{Lema}
 \newtheorem{prop}[theo]{Propozi\c{t}ia}
 \newtheorem{rem}[theo]{Remarca}
-\newenvironment{proof}{\noindnt\textbf{Demonstratie.}}{\hfill\rule{.5em}{.5em}}
+\newenvironment{proof}{\noindent\textbf{Demonstratie.}}{\hfill\rule{.5em}{.5em}}
 \end{latex}
 
 That square is made using \code{\rule[raise]{width}{thickness}} (raise means
@@ -38,7 +38,7 @@ $x \neq 0 \implies (x < 0) \lor (x > 0)$
 \end{corol}
 \end{example}
 
-\subsection{With \code{asmthm}}
+\subsection*{With \code{asmthm}}
 Adding a "*" after \code{\newtheorem} will not number any theorem of that type
 like so:\\
 \code{\newtheorem*{rem}[theo]{Remarca}}
